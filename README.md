@@ -2,6 +2,8 @@
 
 Bienvenidos a **FlexJS**, un framework revolucionario para la creación de interfaces de usuario web modernas y dinámicas. Diseñado para ser fácil de usar tanto para desarrolladores expertos como para principiantes, **FlexJS** te proporciona un entorno potente y modular que simplifica la creación de aplicaciones web avanzadas. **Cada componente, así como el propio framework, es completamente personalizable y escalable a nivel de código e implementación**, permitiendo que los desarrolladores adapten el framework a sus necesidades específicas.
 
+Además, **FlexJS** permite la **implementación libre de librerías y plugins externos**, lo que significa que puedes integrar herramientas adicionales para expandir las funcionalidades del framework sin restricciones. También puedes utilizar **hojas de estilo CSS personalizadas** para diseñar una interfaz única, ajustada al estilo y necesidades de tu aplicación.
+
 ## ¿Qué es FlexJS?
 
 **FlexJS** es un framework rápido, modular y completamente enfocado en **JavaScript (99%)** y **HTML5 (1%)**. Su principal característica es la creación de componentes reutilizables y **totalmente personalizables**, lo que permite construir interfaces complejas con flexibilidad, mejorando la seguridad y la eficiencia del desarrollo web. Ya sea que estés creando una página web sencilla o una aplicación compleja, **FlexJS** te ofrece herramientas poderosas y fáciles de integrar para acelerar tu desarrollo, con la posibilidad de **escalar** tu aplicación sin perder rendimiento ni organización.
@@ -11,16 +13,21 @@ Bienvenidos a **FlexJS**, un framework revolucionario para la creación de inter
 ### 1. **Modularidad y Personalización Completa**
 Cada componente de **FlexJS** es independiente, reutilizable y completamente **personalizable**. Puedes mezclar y combinar módulos como tarjetas (**cards**), modales (**modals**), pestañas (**tabs**), imágenes adaptativas, video, audio y mucho más. FlexJS está diseñado para maximizar la modularidad, lo que permite escalar proyectos y personalizar el comportamiento de cada componente según las necesidades de la aplicación.
 
+Además, **FlexJS** te permite agregar **librerías y plugins externos** libremente, lo que amplía las funcionalidades del framework sin interferir con su arquitectura principal. Puedes integrar desde herramientas para gráficos, hasta funcionalidades avanzadas como animaciones o validaciones.
+
 ### 2. **HTML5 Optimizado y Personalizable**
 Usando solo un archivo HTML5, todo el contenido se renderiza y gestiona directamente desde JavaScript, lo que simplifica la configuración inicial y refuerza la seguridad del sitio. **Este enfoque es personalizable**, permitiendo que los desarrolladores ajusten la estructura HTML y optimicen la seguridad según los requerimientos específicos del proyecto.
 
-### 3. **Componentes Multimedia Avanzados y Escalables**
+### 3. **Estilos CSS Personalizados**
+**FlexJS** te brinda la libertad de utilizar **hojas de estilo CSS personalizadas**, lo que permite a los desarrolladores adaptar completamente el diseño y estilo visual de su aplicación. Ya sea integrando **Bootstrap** para un diseño responsivo o aplicando tu propio **CSS**, el framework no impone restricciones sobre el diseño, dándote control total sobre el aspecto visual.
+
+### 4. **Componentes Multimedia Avanzados y Escalables**
 **FlexJS** incluye componentes de video y audio con capacidades tanto de reproducción como de grabación, permitiendo seleccionar dispositivos de manera dinámica (cámara y micrófono). **Estos componentes son escalables** para admitir flujos multimedia más complejos o integraciones con terceros, y pueden personalizarse para manejar diferentes formatos y resoluciones de archivo según sea necesario.
 
-### 4. **Accesibilidad Mejorada y Configurable**
+### 5. **Accesibilidad Mejorada y Configurable**
 **FlexJS** prioriza la accesibilidad, ofreciendo componentes diseñados para usuarios con discapacidades visuales y personas con daltonismo. **Cada componente de accesibilidad es completamente configurable**, lo que permite ajustarlo para cumplir con las normas de accesibilidad o los requisitos específicos de un proyecto. Esto incluye un selector de temas que se puede personalizar para ofrecer diferentes esquemas de color y ajustes visuales para personas con diferentes tipos de discapacidades visuales.
 
-### 5. **Contexto Progresivo Personalizable**
+### 6. **Contexto Progresivo Personalizable**
 El núcleo de **FlexJS** incluye un sistema de contexto progresivo que utiliza **localStorage** para almacenar y acceder rápidamente a datos de la aplicación. **Este sistema es escalable y altamente personalizable**, lo que permite almacenar datos de usuarios, preferencias y más, de forma eficiente. Los desarrolladores pueden adaptar este contexto para ajustarse a las necesidades de almacenamiento dinámico o persistente de cualquier aplicación.
 
 ## Componentes Principales de FlexJS
@@ -52,7 +59,7 @@ Con **FlexJS**, puedes **configurar y personalizar** los modos de accesibilidad,
 
 **FlexJS** es ideal tanto para desarrolladores principiantes como avanzados. Su estructura modular permite comenzar rápidamente con componentes predefinidos, mientras que su flexibilidad y **capacidad de personalización** asegura que cualquier aspecto del framework puede ser ajustado o extendido para satisfacer las necesidades del proyecto.
 
-Este framework es perfecto para desarrolladores que buscan **velocidad**, **modularidad**, **escalabilidad** y **personalización**, ya que cada componente es adaptable y permite ajustes a nivel de código e implementación.
+Además, **FlexJS** permite la **integración de librerías y plugins** de terceros y el uso de **CSS personalizado**, lo que hace que el framework sea adaptable a cualquier flujo de trabajo o preferencia de estilo.
 
 ## Ejemplo de Uso
 
