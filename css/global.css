@@ -1,0 +1,147 @@
+/* Archivo: css/global.css */
+
+/* Importar las variables */
+@import 'variables.css';
+
+/* Reseteo de estilos (Normalización de elementos HTML5) */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+html, body {
+    height: 100%;
+    line-height: 1.6;
+}
+
+body {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+/* Definir estilos propios para elementos HTML5 */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-medium);
+    line-height: 1.2;
+    color: var(--primary-color);
+}
+
+p {
+    margin-bottom: var(--spacing-medium);
+    color: var(--text-color);
+}
+
+ul, ol {
+    margin-bottom: var(--spacing-medium);
+    padding-left: var(--spacing-large);
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Formularios */
+input, textarea, select, button {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    border: 1px solid var(--color-gray-light);
+    padding: var(--spacing-small);
+    border-radius: var(--border-radius);
+}
+
+button {
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-small) var(--spacing-medium);
+    font-weight: var(--font-weight-bold);
+    box-shadow: var(--box-shadow);
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--spacing-medium);
+}
+
+th, td {
+    padding: var(--spacing-small);
+    border: 1px solid var(--color-gray-light);
+    text-align: left;
+}
+
+/* Bloques de código */
+code, pre {
+    font-family: 'Courier New', monospace;
+    background-color: var(--color-gray-light);
+    padding: var(--spacing-small);
+    border-radius: var(--border-radius);
+    display: block;
+    margin-bottom: var(--spacing-medium);
+}
+
+/* Estilos adicionales para alertas */
+.alert {
+    padding: var(--spacing-small) var(--spacing-medium);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-medium);
+}
+
+.alert-warning {
+    background-color: var(--color-warning);
+    color: #fff;
+}
+
+.alert-danger {
+    background-color: var(--color-danger);
+    color: #fff;
+}
+
+.alert-success {
+    background-color: var(--color-success);
+    color: #fff;
+}
+
+.alert-info {
+    background-color: var(--color-info);
+    color: #fff;
+}
+
+/* Estilos adicionales para Tabs verticales */
+.nav-pills.flex-column {
+    border-right: 1px solid #ddd;
+}
+
+.tab-content {
+    padding-left: 15px;
+}
+.nav-pills.flex-column {
+    border-right: 1px solid #ddd;
+}
+
+.tab-content {
+    padding-left: 15px;
+}

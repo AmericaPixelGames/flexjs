@@ -1,0 +1,3 @@
+body {
+    filter: contrast(80%) sepia(50%) hue-rotate(30deg) saturate(150%);
+}

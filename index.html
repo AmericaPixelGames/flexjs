@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
+        <!-- Título del sitio -->
+        <title>Mi Framework</title>
+
+        <!-- CSS de Bootstrap (CDN) -->
+        <link href="/library/bootstrap/bootstrap.min.css" rel="stylesheet">
+        <!-- Iconos fontawesome -->
+        <link rel="stylesheet" href="/css/icons.css">
+        <!-- Archivo CSS personalizado -->
+        <link rel="stylesheet" href="/css/global.css">
+        <link rel="stylesheet" href="/css/styles.css">
+        <!-- Aquí se cargará el archivo CSS del tema dinámicamente -->
+        <link id="theme-link" rel="stylesheet" href="css/theme/light.css"> <!-- Tema por defecto -->
+    </head>
+    <!-- Aquí puedes agregar tu contenido -->
+    <body>
+        <!-- Contenedor donde se renderizará el contenido de cada página -->
+        <div id="app" class="container mt-4">
+            <div id="page-content">
+                <!-- Aquí se renderizarán las páginas -->
+            </div>
+        </div>
+        <!-- jQuery (CDN) -->
+        <script src="/plugins/jquery-3.6.0.min.js"></script>
+        <!-- JS de Bootstrap (CDN) -->
+        <script src="/library/bootstrap/bootstrap.bundle.min.js"></script>
+
+        <!-- Archivo JS personalizado -->
+        <!-- <script type="module" src="./js/main.js"></script> -->
+        <!-- Sistema de enrutamiento y renderizado -->
+        <script type="module" src="/js/render.js"></script>
+        <script type="module" src="/js/route.js"></script>
+        <!-- Filtros SVG para los tipos de daltonismo -->
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <!-- Filtro Protanopia -->
+            <filter id="protanopia">
+                <feColorMatrix type="matrix" values="0.567, 0.433, 0, 0, 0, 0.558, 0.442, 0, 0, 0, 0, 0.242, 0.758, 0, 0, 0, 0, 0, 1, 0"/>
+            </filter>
+        
+            <!-- Filtro Deuteranopia -->
+            <filter id="deuteranopia">
+                <feColorMatrix type="matrix" values="0.625, 0.375, 0, 0, 0, 0.7, 0.3, 0, 0, 0, 0, 0.3, 0.7, 0, 0, 0, 0, 0, 1, 0"/>
+            </filter>
+        
+            <!-- Filtro Tritanopia -->
+            <filter id="tritanopia">
+                <feColorMatrix type="matrix" values="0.95, 0.05, 0, 0, 0, 0, 0.433, 0.567, 0, 0, 0, 0.475, 0.525, 0, 0, 0, 0, 0, 1, 0"/>
+            </filter>
+        
+            <!-- Filtro Protanomalía -->
+            <filter id="protanomaly">
+                <feColorMatrix type="matrix" values="0.817, 0.183, 0, 0, 0, 0.333, 0.667, 0, 0, 0, 0, 0.125, 0.875, 0, 0, 0, 0, 0, 1, 0"/>
+            </filter>
+        
+            <!-- Filtro Deuteranomalía -->
+            <filter id="deuteranomaly">
+                <feColorMatrix type="matrix" values="0.8, 0.2, 0, 0, 0, 0.258, 0.742, 0, 0, 0, 0, 0.142, 0.858, 0, 0, 0, 0, 0, 1, 0"/>
+            </filter>
+        </svg>
+    </body>
+</html>

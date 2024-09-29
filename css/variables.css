@@ -1,0 +1,62 @@
+/* Archivo: css/variables.css */
+
+/* Colores principales por defecto */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --background-color: #ffffff;
+    --text-color: #333333;
+    --link-color: #3498db;
+
+    /* Tipografías */
+    --font-family-base: 'Arial', sans-serif;
+    --font-size-base: 16px;
+    --font-weight-normal: 400;
+    --font-weight-bold: 700;
+
+    /* Espaciado */
+    --spacing-small: 8px;
+    --spacing-medium: 16px;
+    --spacing-large: 24px;
+
+    /* Bordes y sombras */
+    --border-radius: 4px;
+    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Tema Light */
+.light-theme {
+    --primary-color: #2980b9;
+    --secondary-color: #27ae60;
+    --background-color: #f4f6f7;
+    --text-color: #2c3e50;
+    --link-color: #2980b9;
+}
+
+/* Tema Dark */
+.dark-theme {
+    --primary-color: #1abc9c;
+    --secondary-color: #e74c3c;
+    --background-color: #2c3e50;
+    --text-color: #ecf0f1;
+    --link-color: #1abc9c;
+}
+
+/* Tema Azul */
+.blue-theme {
+    --primary-color: #5DADE2;
+    --secondary-color: #AED6F1;
+    --background-color: #17202A;
+    --text-color: #D6DBDF;
+    --link-color: #5DADE2;
+}
+
+/* Colores adicionales (pueden usarse en cualquier tema) */
+:root {
+    --color-warning: #f39c12;
+    --color-danger: #e74c3c;
+    --color-info: #3498db;
+    --color-success: #2ecc71;
+    --color-gray-light: #bdc3c7;
+    --color-gray-dark: #7f8c8d;
+}

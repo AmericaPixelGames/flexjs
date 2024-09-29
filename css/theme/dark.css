@@ -1,0 +1,86 @@
+/* Archivo: css/dark.css */
+
+/* Fondo general y texto */
+body {
+    background-color: #1a1a1a; /* Color de fondo oscuro */
+    color: #f1f1f1;            /* Texto claro */
+}
+
+/* Botones */
+.btn {
+    background-color: #4caf50; /* Botón verde */
+    color: #fff;               /* Texto blanco */
+}
+
+.btn:hover {
+    background-color: #388e3c; /* Botón verde más oscuro al hacer hover */
+}
+
+/* Títulos */
+h1, h2, h3 {
+    color: #f1f1f1; /* Color de texto claro */
+}
+
+/* Enlaces */
+a {
+    color: #90caf9; /* Azul claro */
+    text-decoration: none;
+}
+
+a:hover {
+    color: #64b5f6; /* Azul más brillante al hacer hover */
+    text-decoration: underline;
+}
+
+/* Contenedor principal */
+.container {
+    background-color: #333333; /* Fondo gris oscuro para contenedores */
+    padding: 20px;
+    border-radius: 8px;
+    color: #f1f1f1; /* Texto claro */
+}
+
+/* Formularios */
+.form-control {
+    border: 1px solid #555555;  /* Borde gris oscuro */
+    background-color: #2a2a2a;  /* Fondo oscuro */
+    color: #f1f1f1;             /* Texto claro */
+}
+
+.form-control:focus {
+    border-color: #64b5f6; /* Azul claro al hacer focus */
+    box-shadow: 0 0 5px rgba(100, 181, 246, 0.5); /* Sombra azul claro */
+}
+
+/* Encabezado */
+header {
+    background-color: #333333; /* Fondo gris oscuro */
+    color: #ffffff;            /* Texto blanco */
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* Pie de página */
+footer {
+    background-color: #1a1a1a; /* Fondo negro */
+    color: #ffffff;            /* Texto blanco */
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+/* Estilo de tablas */
+table {
+    background-color: #333333; /* Fondo de tabla gris oscuro */
+    color: #f1f1f1;            /* Texto claro */
+    border: 1px solid #444444; /* Bordes oscuros */
+}
+
+th, td {
+    border: 1px solid #444444; /* Bordes de celdas */
+    padding: 10px;
+}
+
+th {
+    background-color: #444444; /* Fondo más oscuro para encabezados de tabla */
+}

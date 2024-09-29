@@ -1,0 +1,146 @@
+/* CSS3 Icons using pseudo-elements and pure CSS */
+
+/* Base styles for all icons */
+.icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.5em;
+    position: relative;
+}
+
+/* Checkmark Icon */
+.icon-check:before {
+    content: "";
+    position: absolute;
+    top: 0.2em;
+    left: 0.15em;
+    width: 0.25em;
+    height: 0.5em;
+    border: solid #28a745;
+    border-width: 0 0.15em 0.15em 0;
+    transform: rotate(45deg);
+}
+
+/* Close (X) Icon */
+.icon-close:before {
+    content: "";
+    position: absolute;
+    top: 0.1em;
+    left: 0.1em;
+    width: 0.8em;
+    height: 0.8em;
+    background-color: transparent;
+    border-top: 0.15em solid #dc3545;
+    border-right: 0.15em solid #dc3545;
+    transform: rotate(45deg);
+}
+
+.icon-close:after {
+    content: "";
+    position: absolute;
+    top: 0.1em;
+    left: 0.1em;
+    width: 0.8em;
+    height: 0.8em;
+    background-color: transparent;
+    border-top: 0.15em solid #dc3545;
+    border-right: 0.15em solid #dc3545;
+    transform: rotate(-45deg);
+}
+
+/* Arrow Right Icon */
+.icon-arrow-right:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 0.7em;
+    height: 0.15em;
+    background-color: #007bff;
+    transform: translateY(-50%);
+}
+
+.icon-arrow-right:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 0.35em;
+    height: 0.35em;
+    border-right: 0.15em solid #007bff;
+    border-bottom: 0.15em solid #007bff;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+/* Arrow Left Icon */
+.icon-arrow-left:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 0.7em;
+    height: 0.15em;
+    background-color: #007bff;
+    transform: translateY(-50%);
+}
+
+.icon-arrow-left:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 0.35em;
+    height: 0.35em;
+    border-left: 0.15em solid #007bff;
+    border-top: 0.15em solid #007bff;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+/* Plus (+) Icon */
+.icon-plus:before, .icon-plus:after {
+    content: "";
+    position: absolute;
+    background-color: #28a745;
+}
+
+.icon-plus:before {
+    top: 50%;
+    left: 0;
+    width: 1em;
+    height: 0.2em;
+    transform: translateY(-50%);
+}
+
+.icon-plus:after {
+    top: 0;
+    left: 50%;
+    width: 0.2em;
+    height: 1em;
+    transform: translateX(-50%);
+}
+
+/* Minus (-) Icon */
+.icon-minus:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 1em;
+    height: 0.2em;
+    background-color: #dc3545;
+    transform: translateY(-50%);
+}
+
+/* Star Icon */
+.icon-star:before, .icon-star:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 1em;
+    height: 1em;
+    background-color: #ffc107;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    transform: translateX(-50%);
+}
