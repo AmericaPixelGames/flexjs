@@ -51,3 +51,13 @@
     padding: 20px;
     text-align: center;
 }
+pre {
+    background-color: #2d2d2d;
+    color: #ffffff;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+code {
+    font-family: 'Source Code Pro', monospace;
+}

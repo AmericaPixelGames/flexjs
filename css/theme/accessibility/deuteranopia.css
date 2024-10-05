@@ -1,3 +1,183 @@
-body {
+/* Archivo: css/theme/accessibility/deuteranopia.css */
+
+/* Estilos generales para el cuerpo */
+body { 
     filter: contrast(90%) sepia(100%) hue-rotate(-50deg) saturate(150%);
+    background-color: #f9f9f9; /* Fondo claro para mejorar el contraste del contenido */
+    color: #222; /* Texto oscuro para asegurar legibilidad */
+    font-size: 1.1em; /* Aumentar el tamaño del texto para mejorar accesibilidad */
+    line-height: 1.7; /* Espaciado entre líneas más amplio para una mejor legibilidad */
+    text-align: justify; /* Mejor presentación del contenido */
+}
+
+/* Enlaces */
+a {
+    color: #0056b3; /* Azul accesible */
+    text-decoration: underline;
+}
+
+a:hover, a:focus {
+    color: #003366; /* Tono más oscuro para asegurar contraste en hover o focus */
+    text-decoration: none; /* Quitar subrayado en hover */
+}
+
+/* Botones */
+.btn {
+    background-color: #0069d9; /* Botón con color azul accesible */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-size: 1.05em;
+}
+
+.btn:hover, .btn:focus {
+    background-color: #0056b3; /* Color más oscuro en hover o focus */
+}
+
+/* Títulos */
+h1, h2, h3, h4, h5, h6 {
+    color: #222; /* Texto oscuro para asegurar legibilidad */
+    font-weight: bold;
+    letter-spacing: 1px; /* Espaciado adicional entre letras para mejorar la legibilidad */
+}
+
+/* Fondo y estilo de formularios */
+.form-control {
+    background-color: #ffffff; /* Fondo blanco */
+    color: #333; /* Texto oscuro */
+    border: 1px solid #ccc; /* Bordes claros */
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.form-control:focus {
+    border-color: #80bdff; /* Borde azul accesible */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25); /* Sombra ligera */
+}
+
+/* Tablas */
+table {
+    background-color: #f9f9f9; /* Fondo claro */
+    color: #333; /* Texto oscuro */
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ddd; /* Bordes claros */
+    padding: 12px; /* Espaciado extra para accesibilidad */
+    text-align: left;
+}
+
+th {
+    background-color: #e9ecef; /* Fondo gris claro para los encabezados */
+    color: #333; /* Texto oscuro */
+}
+
+/* Botones de formulario */
+button {
+    background-color: #28a745; /* Verde accesible */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover, button:focus {
+    background-color: #218838; /* Verde más oscuro en hover o focus */
+}
+
+/* Ajustes de accesibilidad para imágenes */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    filter: contrast(90%) saturate(125%);
+}
+
+/* Barra de navegación */
+.navbar {
+    background-color: #333; /* Fondo oscuro */
+    color: white;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-link:hover, .nav-link:focus {
+    color: #e0e0e0; /* Color claro para hover o focus */
+}
+
+/* Estilos de pie de página */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Contenedores */
+.container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+/* Listas */
+ul, ol {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+    color: #333; /* Color oscuro para listas */
+}
+
+/* Personalización adicional de bordes */
+.card, .alert, .badge {
+    border-radius: 8px; /* Bordes suaves en tarjetas, alertas y etiquetas */
+    filter: contrast(90%) saturate(120%);
+}
+
+/* Enfocar elementos de entrada */
+input[type="text"], input[type="email"], textarea {
+    border: 2px solid #ced4da; /* Bordes claros */
+    padding: 10px;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+    border-color: #80bdff; /* Color azul para accesibilidad en focus */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25); /* Sombra azul en focus */
+}
+
+/* Ajustes para el contraste de colores */
+.blockquote {
+    background-color: #f1f1f1; /* Fondo claro para citas */
+    color: #555;
+    padding: 15px;
+    border-left: 5px solid #80bdff; /* Borde izquierdo para citas */
+    font-style: italic;
+}
+
+/* Mejorar el contraste del texto en botones pequeños o insignias */
+.badge {
+    background-color: #17a2b8;
+    color: white;
+}
+#accessibility-container> div > label{
+    color: #f9f9f9;
+}
+pre {
+    background-color: #2d2d2d;
+    color: #000000;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+code {
+    font-family: 'Source Code Pro', monospace;
 }

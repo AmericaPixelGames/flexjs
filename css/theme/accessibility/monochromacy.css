@@ -1,3 +1,203 @@
-body {
-    filter: grayscale(100%);
+/* Archivo: css/theme/accessibility/monochromacy.css */
+
+/* Estilos generales para el cuerpo */
+body { 
+    filter: grayscale(100%) contrast(90%);
+    background-color: #f5f5f5; /* Fondo gris claro para mayor contraste */
+    color: #2d2d2d; /* Texto gris oscuro para asegurar legibilidad */
+    font-size: 1.1em; /* Aumentar el tamaño del texto para mejorar la accesibilidad */
+    line-height: 1.6; /* Espaciado entre líneas más amplio para una mejor lectura */
+    text-align: justify; /* Ajustar el texto para mejorar la presentación */
+}
+
+/* Enlaces */
+a {
+    color: #000; /* Texto en negrita para enlaces en monocromatismo */
+    text-decoration: underline;
+}
+
+a:hover, a:focus {
+    color: #333; /* Tono más oscuro para asegurar contraste en hover o focus */
+    text-decoration: none; /* Quitar subrayado en hover */
+}
+
+/* Botones */
+.btn {
+    background-color: #555; /* Botón en gris medio */
+    color: white; /* Texto blanco en los botones */
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-size: 1.05em;
+}
+
+.btn:hover, .btn:focus {
+    background-color: #333; /* Botón más oscuro en hover o focus */
+}
+
+/* Títulos */
+h1, h2, h3, h4, h5, h6 {
+    color: #2d2d2d; /* Título en gris oscuro */
+    font-weight: bold;
+    letter-spacing: 1px; /* Espaciado entre letras para mejorar la legibilidad */
+}
+
+/* Formularios */
+.form-control {
+    background-color: #e0e0e0; /* Fondo gris claro */
+    color: #333; /* Texto gris oscuro */
+    border: 1px solid #ccc; /* Bordes claros */
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.form-control:focus {
+    border-color: #666; /* Borde gris oscuro en focus */
+    box-shadow: 0 0 5px rgba(102, 102, 102, 0.5); /* Sombra gris */
+}
+
+/* Tablas */
+table {
+    background-color: #f9f9f9; /* Fondo gris claro para mayor contraste */
+    color: #2d2d2d; /* Texto gris oscuro */
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ddd; /* Bordes claros */
+    padding: 12px; /* Espaciado adicional para accesibilidad */
+    text-align: left;
+}
+
+th {
+    background-color: #e0e0e0; /* Fondo gris para encabezados */
+    color: #333; /* Texto oscuro */
+}
+
+/* Botones de formulario */
+button {
+    background-color: #444; /* Botón gris oscuro */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover, button:focus {
+    background-color: #222; /* Botón más oscuro en hover o focus */
+}
+
+/* Imágenes */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    filter: grayscale(100%); /* Asegurar que las imágenes también sean monocromáticas */
+}
+
+/* Barra de navegación */
+.navbar {
+    background-color: #333; /* Fondo gris oscuro */
+    color: white;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-link:hover, .nav-link:focus {
+    color: #ccc; /* Color claro para hover o focus */
+}
+
+/* Estilos de pie de página */
+footer {
+    background-color: #2d2d2d; /* Fondo gris oscuro */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Contenedores */
+.container {
+    background-color: #fff; /* Fondo blanco */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+/* Listas */
+ul, ol {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+    color: #2d2d2d; /* Texto gris oscuro */
+}
+
+/* Estilo adicional para citas */
+blockquote {
+    background-color: #e9ecef; /* Fondo gris claro */
+    color: #333; /* Texto gris oscuro */
+    padding: 15px;
+    border-left: 5px solid #666; /* Borde izquierdo en gris */
+    font-style: italic;
+}
+
+/* Botones pequeños e insignias */
+.badge {
+    background-color: #555; /* Fondo gris medio */
+    color: white;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+
+/* Enfoque en elementos de entrada */
+input[type="text"], input[type="email"], textarea {
+    border: 2px solid #ced4da; /* Bordes claros */
+    padding: 10px;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+    border-color: #666; /* Borde gris oscuro en focus */
+    box-shadow: 0 0 8px rgba(102, 102, 102, 0.25); /* Sombra gris oscura */
+}
+
+/* Mejoras de accesibilidad para el contraste del texto */
+p, span, div, section, header, footer, aside {
+    color: #2d2d2d; /* Color uniforme de texto oscuro */
+}
+
+/* Cajas de alerta */
+.alert {
+    background-color: #eee; /* Fondo claro */
+    color: #333; /* Texto gris oscuro */
+    border-left: 5px solid #555; /* Borde gris oscuro */
+    padding: 10px 15px;
+    margin-bottom: 20px;
+}
+
+/* Mejorar el contraste y visibilidad de tablas */
+thead {
+    background-color: #e0e0e0; /* Fondo claro en la cabecera de la tabla */
+    color: #333; /* Texto gris oscuro */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Fila alterna para mayor claridad */
+}
+#accessibility-container> div > label{
+    color: #f9f9f9;
+}
+pre {
+    background-color: #2d2d2d;
+    color: #000000;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+code {
+    font-family: 'Source Code Pro', monospace;
 }

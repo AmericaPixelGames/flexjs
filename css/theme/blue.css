@@ -67,3 +67,13 @@ footer {
     text-align: center;
     border-radius: 5px;
 }
+pre {
+    background-color: #2d2d2d;
+    color: #000000;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+code {
+    font-family: 'Source Code Pro', monospace;
+}

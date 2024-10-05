@@ -10,10 +10,11 @@ const context = (() => {
         version: "1.0",
         user: {
             name: "Usuario",
-            preferences: {
-                theme: "light"
-            }
-        }
+        },
+        selectedTheme: "blue",
+        highContrast: 'false',
+        fontSize:"1",
+        colorBlindMode: "none"
     };
 
     // El contexto progresivo donde el usuario agrega o modifica datos
@@ -111,5 +112,4 @@ const context = (() => {
     };
 
 })();
-
 export default context;

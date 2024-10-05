@@ -2,42 +2,67 @@
 
 /* Fondo general y texto */
 body {
-    background-color: #1a1a1a; /* Color de fondo oscuro */
+    background-color: #1a1a1a; /* Fondo oscuro */
     color: #f1f1f1;            /* Texto claro */
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Encabezados */
+h1, h2, h3, h4, h5, h6 {
+    color: #f1f1f1; /* Color de texto claro */
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.75em;
+}
+
+/* Enlaces */
+a {
+    color: #1e1d1d; /* Azul claro */
+    text-decoration: none;
+}
+
+a:hover {
+    color: #002efb; /* Azul más brillante al hacer hover */
+    text-decoration: underline;
 }
 
 /* Botones */
 .btn {
     background-color: #4caf50; /* Botón verde */
     color: #fff;               /* Texto blanco */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .btn:hover {
-    background-color: #388e3c; /* Botón verde más oscuro al hacer hover */
+    color: #333333 !important;
+    background-color: #ffffff !important; /* Botón verde más oscuro al hacer hover */
 }
 
-/* Títulos */
-h1, h2, h3 {
-    color: #f1f1f1; /* Color de texto claro */
+.btn:disabled {
+    background-color: #555; /* Estilo para botones deshabilitados */
+    cursor: not-allowed;
 }
 
-/* Enlaces */
-a {
-    color: #90caf9; /* Azul claro */
-    text-decoration: none;
-}
-
-a:hover {
-    color: #64b5f6; /* Azul más brillante al hacer hover */
-    text-decoration: underline;
-}
-
-/* Contenedor principal */
-.container {
-    background-color: #333333; /* Fondo gris oscuro para contenedores */
+/* Contenedores */
+.container, .section {
+    background-color: #333333; /* Fondo gris oscuro */
     padding: 20px;
     border-radius: 8px;
-    color: #f1f1f1; /* Texto claro */
+    margin-bottom: 20px;
 }
 
 /* Formularios */
@@ -45,6 +70,8 @@ a:hover {
     border: 1px solid #555555;  /* Borde gris oscuro */
     background-color: #2a2a2a;  /* Fondo oscuro */
     color: #f1f1f1;             /* Texto claro */
+    border-radius: 5px;
+    padding: 10px;
 }
 
 .form-control:focus {
@@ -52,12 +79,75 @@ a:hover {
     box-shadow: 0 0 5px rgba(100, 181, 246, 0.5); /* Sombra azul claro */
 }
 
+/* Botón de envío en formularios */
+button[type="submit"] {
+    background-color: #000000; /* Botón azul claro */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+button[type="submit"]:hover {
+    background-color: #ffffff; /* Azul más oscuro al hacer hover */
+}
+
+/* Tablas */
+table {
+    background-color: #333333; /* Fondo de tabla gris oscuro */
+    color: #f1f1f1;            /* Texto claro */
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #444444; /* Bordes de celdas */
+    padding: 10px;
+    color: #f1f1f1
+}
+
+th {
+    background-color: #444444; /* Fondo más oscuro para encabezados de tabla */
+    color: #ffffff; /* Texto blanco */
+}
+
+tr:nth-child(even) {
+    background-color: #2a2a2a; /* Fondo alternativo para filas pares */
+}
+
+/* Listas */
+
+.list-group-item,ul, ol {
+    color: #f1f1f1; /* Texto claro */
+    padding-left: 20px;
+    background-color: #444444;
+}
+li {
+  
+    margin-bottom: 10px;
+}
+.navbar-nav {
+    color: #444444; /* Texto claro */
+    padding-left: 20px;
+    background-color: #f8f9fa!important;
+}
+/* Imágenes */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid #444444; /* Bordes de imágenes */
+}
+
 /* Encabezado */
 header {
     background-color: #333333; /* Fondo gris oscuro */
     color: #ffffff;            /* Texto blanco */
-    padding: 15px;
+    padding: 20px;
     border-radius: 5px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 /* Pie de página */
@@ -67,20 +157,66 @@ footer {
     padding: 15px;
     text-align: center;
     border-radius: 5px;
+    margin-top: 20px;
 }
 
-/* Estilo de tablas */
-table {
-    background-color: #333333; /* Fondo de tabla gris oscuro */
-    color: #f1f1f1;            /* Texto claro */
-    border: 1px solid #444444; /* Bordes oscuros */
+/* Inputs tipo checkbox y radio */
+input[type="checkbox"], input[type="radio"] {
+    accent-color: #64b5f6; /* Cambia el color del check y radio a azul claro */
 }
 
-th, td {
-    border: 1px solid #444444; /* Bordes de celdas */
+/* Select dropdown */
+select {
+    background-color: #2a2a2a;
+    color: #f1f1f1;
+    border: 1px solid #555555;
+    border-radius: 5px;
     padding: 10px;
 }
 
-th {
-    background-color: #444444; /* Fondo más oscuro para encabezados de tabla */
+/* Cards */
+.card {
+    background-color: #2a2a2a;
+    border: 1px solid #444444;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.card-text {
+    color: #cccccc;
+}
+
+.card .btn {
+    background-color: #525252; /* Botón azul claro en cards */
+    color: white;
+}
+
+.card .btn:hover {
+    background-color: #64b5f6; /* Azul más brillante al hacer hover */
+}
+
+/* Code blocks */
+pre, code {
+    background-color: #2a2a2a;
+    color: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+}
+p{
+    color: #f1f1f1;
+}
+.modal-content {
+    background-color: #434343;
+}
+footer>p{
+    color: #2a2a2a;
 }

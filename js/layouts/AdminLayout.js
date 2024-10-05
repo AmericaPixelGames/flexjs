@@ -11,7 +11,6 @@ export function AdminLayout(content, options = {}) {
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
             <title>${title}</title>
-            <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         </head>
         <body>
             <header>
@@ -41,9 +40,6 @@ export function AdminLayout(content, options = {}) {
             <footer class="bg-dark text-white text-center py-4 mt-5">
                 <p>${footerText}</p>
             </footer>
-
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
         </body>
         </html>
     `;

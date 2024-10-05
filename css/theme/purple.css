@@ -1,0 +1,79 @@
+/* Archivo: css/purple.css */
+
+/* Fondo general y texto */
+body {
+    background-color: #f3e5f5; /* Púrpura claro */
+    color: #4a148c;            /* Púrpura oscuro */
+}
+
+/* Botones */
+.btn {
+    background-color: #9c27b0; /* Púrpura medio */
+    color: #fff;               /* Texto blanco */
+}
+
+.btn:hover {
+    background-color: #7b1fa2; /* Púrpura más oscuro para hover */
+}
+
+/* Títulos */
+h1, h2, h3 {
+    color: #4a148c; /* Púrpura oscuro */
+}
+
+/* Enlaces */
+a {
+    color: #8e24aa; /* Púrpura medio */
+    text-decoration: none;
+}
+
+a:hover {
+    color: #4a148c; /* Púrpura oscuro al pasar el mouse */
+    text-decoration: underline;
+}
+
+/* Contenedor principal */
+.container {
+    background-color: #e1bee7; /* Púrpura muy claro para contenedores */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Formularios */
+.form-control {
+    border: 1px solid #ce93d8; /* Borde púrpura claro */
+    background-color: #f3e5f5; /* Fondo púrpura claro */
+    color: #4a148c;            /* Texto púrpura oscuro */
+}
+
+.form-control:focus {
+    border-color: #ba68c8; /* Púrpura medio al hacer focus */
+    box-shadow: 0 0 5px rgba(156, 39, 176, 0.5); /* Efecto de sombra púrpura */
+}
+
+/* Encabezado */
+header {
+    background-color: #7b1fa2; /* Púrpura oscuro */
+    color: #fff;               /* Texto blanco */
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* Pie de página */
+footer {
+    background-color: #4a148c; /* Púrpura muy oscuro */
+    color: #fff;               /* Texto blanco */
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+
+/* Code blocks */
+pre, code {
+    background-color: #2a2a2a;
+    color: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+}

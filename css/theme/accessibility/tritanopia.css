@@ -1,3 +1,181 @@
+/* Archivo: css/theme/accessibility/tritanopia.css */
+
+/* Estilos generales para el cuerpo */
 body {
     filter: contrast(80%) sepia(80%) hue-rotate(45deg) saturate(200%);
+    background-color: #f0f0f0; /* Fondo gris claro para facilitar la lectura */
+    color: #2d2d2d; /* Texto gris oscuro para mejorar el contraste */
+    font-size: 1.2em; /* Aumentar tamaño del texto para mayor legibilidad */
+    line-height: 1.7; /* Mejor espaciado entre líneas */
+    text-align: justify;
+}
+
+/* Enlaces */
+a {
+    color: #ffa07a; /* Naranja claro para enlaces, fácilmente perceptible */
+    text-decoration: underline;
+}
+
+a:hover, a:focus {
+    color: #ff7f50; /* Naranja más oscuro en hover/focus */
+    text-decoration: none; /* Eliminar subrayado en hover */
+}
+
+/* Botones */
+.btn {
+    background-color: #3a6b95; /* Azul suave para botones */
+    color: white; /* Texto blanco para un mejor contraste */
+    border: none;
+    border-radius: 4px;
+    padding: 12px 18px;
+    font-size: 1.1em;
+}
+
+.btn:hover, .btn:focus {
+    background-color: #335a7a; /* Azul más oscuro en hover/focus */
+    color: #fff;
+}
+
+/* Títulos */
+h1, h2, h3, h4, h5, h6 {
+    color: #2d2d2d; /* Títulos en gris oscuro */
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+/* Formularios */
+.form-control {
+    background-color: #e8e8e8; /* Fondo gris muy claro */
+    color: #2d2d2d; /* Texto gris oscuro */
+    border: 1px solid #aaa; /* Bordes claros */
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.form-control:focus {
+    border-color: #ffa07a; /* Naranja claro en focus */
+    box-shadow: 0 0 5px rgba(255, 160, 122, 0.5); /* Sombra naranja */
+}
+
+/* Tablas */
+table {
+    background-color: #f9f9f9; /* Fondo claro para tablas */
+    color: #2d2d2d; /* Texto gris oscuro */
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ddd; /* Bordes claros */
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #e0e0e0; /* Fondo claro para encabezados de tabla */
+    color: #2d2d2d; /* Texto gris oscuro */
+}
+
+/* Botones de formulario */
+button {
+    background-color: #3a6b95; /* Azul suave */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover, button:focus {
+    background-color: #335a7a; /* Azul más oscuro en hover/focus */
+}
+
+/* Imágenes */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    filter: contrast(80%) sepia(80%) hue-rotate(45deg) saturate(200%);
+}
+
+/* Barra de navegación */
+.navbar {
+    background-color: #2d2d2d; /* Fondo gris oscuro */
+    color: white;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-link:hover, .nav-link:focus {
+    color: #ffa07a; /* Naranja claro en hover/focus */
+}
+
+/* Estilos de pie de página */
+footer {
+    background-color: #2d2d2d; /* Fondo gris oscuro */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Contenedores */
+.container {
+    background-color: #fff; /* Fondo blanco */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+/* Listas */
+ul, ol {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+    color: #2d2d2d; /* Texto gris oscuro */
+}
+
+/* Citas */
+blockquote {
+    background-color: #e9ecef; /* Fondo gris claro */
+    color: #2d2d2d; /* Texto gris oscuro */
+    padding: 15px;
+    border-left: 5px solid #ffa07a; /* Borde izquierdo naranja */
+    font-style: italic;
+}
+
+/* Cajas de alerta */
+.alert {
+    background-color: #eee; /* Fondo claro */
+    color: #2d2d2d; /* Texto gris oscuro */
+    border-left: 5px solid #ffa07a; /* Borde naranja */
+    padding: 10px 15px;
+    margin-bottom: 20px;
+}
+
+/* Mejorar el contraste y visibilidad de tablas */
+thead {
+    background-color: #e0e0e0; /* Fondo claro en la cabecera de la tabla */
+    color: #2d2d2d; /* Texto gris oscuro */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Fila alterna para mayor claridad */
+}
+#accessibility-container> div > label{
+    color: #f9f9f9;
+}
+pre {
+    background-color: #2d2d2d;
+    color: #000000;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+code {
+    font-family: 'Source Code Pro', monospace;
 }

@@ -1,3 +1,204 @@
+/* Archivo: css/theme/accessibility/protanomaly.css */
+
+/* Estilos generales para el cuerpo */
 body {
     filter: contrast(90%) sepia(70%) hue-rotate(-20deg) saturate(150%);
+    background-color: #f4f4f4; /* Fondo gris claro para mayor contraste */
+    color: #2d2d2d; /* Texto en gris oscuro para garantizar la legibilidad */
+    font-size: 1.1em; /* Aumentar tamaño del texto para mejorar accesibilidad */
+    line-height: 1.6; /* Espaciado entre líneas mayor para facilitar la lectura */
+    text-align: justify;
+}
+
+/* Enlaces */
+a {
+    color: #b54a4a; /* Rojo brillante para los enlaces, adecuado para protanomalía */
+    text-decoration: underline;
+}
+
+a:hover, a:focus {
+    color: #992626; /* Un rojo más oscuro en hover/focus */
+    text-decoration: none; /* Quitar subrayado al pasar el cursor */
+}
+
+/* Botones */
+.btn {
+    background-color: #444; /* Fondo gris oscuro */
+    color: white; /* Texto blanco */
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-size: 1.05em;
+}
+
+.btn:hover, .btn:focus {
+    background-color: #333; /* Botón más oscuro al hacer hover */
+    color: #fff;
+}
+
+/* Títulos */
+h1, h2, h3, h4, h5, h6 {
+    color: #2d2d2d; /* Título en gris oscuro */
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Formularios */
+.form-control {
+    background-color: #e0e0e0; /* Fondo gris claro */
+    color: #2d2d2d; /* Texto gris oscuro */
+    border: 1px solid #aaa; /* Bordes grises claros */
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.form-control:focus {
+    border-color: #b54a4a; /* Rojo brillante al hacer focus */
+    box-shadow: 0 0 5px rgba(181, 74, 74, 0.5); /* Sombra roja en focus */
+}
+
+/* Tablas */
+table {
+    background-color: #f9f9f9; /* Fondo gris claro */
+    color: #2d2d2d; /* Texto gris oscuro */
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ddd; /* Bordes claros */
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #e0e0e0; /* Fondo gris para encabezados */
+    color: #2d2d2d; /* Texto gris oscuro */
+}
+
+/* Botones de formulario */
+button {
+    background-color: #b54a4a; /* Botón rojo para usuarios con protanomalía */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover, button:focus {
+    background-color: #992626; /* Botón más oscuro en hover o focus */
+}
+
+/* Imágenes */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    filter: contrast(90%) sepia(70%) hue-rotate(-20deg) saturate(150%);
+}
+
+/* Barra de navegación */
+.navbar {
+    background-color: #333; /* Fondo gris oscuro */
+    color: white;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-link:hover, .nav-link:focus {
+    color: #b54a4a; /* Rojo claro para hover/focus */
+}
+
+/* Estilos de pie de página */
+footer {
+    background-color: #2d2d2d; /* Fondo gris oscuro */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Contenedores */
+.container {
+    background-color: #fff; /* Fondo blanco */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+/* Listas */
+ul, ol {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+    color: #2d2d2d; /* Texto gris oscuro */
+}
+
+/* Estilo adicional para citas */
+blockquote {
+    background-color: #e9ecef; /* Fondo gris claro */
+    color: #2d2d2d; /* Texto gris oscuro */
+    padding: 15px;
+    border-left: 5px solid #b54a4a; /* Borde izquierdo rojo */
+    font-style: italic;
+}
+
+/* Botones pequeños e insignias */
+.badge {
+    background-color: #b54a4a; /* Fondo rojo */
+    color: white;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+
+/* Enfoque en elementos de entrada */
+input[type="text"], input[type="email"], textarea {
+    border: 2px solid #ced4da; /* Bordes claros */
+    padding: 10px;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+    border-color: #b54a4a; /* Borde rojo en focus */
+    box-shadow: 0 0 8px rgba(181, 74, 74, 0.25); /* Sombra roja */
+}
+
+/* Mejoras de accesibilidad para el contraste del texto */
+p, span, div, section, header, footer, aside {
+    color: #2d2d2d; /* Color uniforme de texto oscuro */
+}
+
+/* Cajas de alerta */
+.alert {
+    background-color: #eee; /* Fondo claro */
+    color: #2d2d2d; /* Texto gris oscuro */
+    border-left: 5px solid #b54a4a; /* Borde rojo */
+    padding: 10px 15px;
+    margin-bottom: 20px;
+}
+
+/* Mejorar el contraste y visibilidad de tablas */
+thead {
+    background-color: #e0e0e0; /* Fondo claro en la cabecera de la tabla */
+    color: #2d2d2d; /* Texto gris oscuro */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Fila alterna para mayor claridad */
+}
+#accessibility-container> div > label{
+    color: #f9f9f9;
+}
+pre {
+    background-color: #2d2d2d;
+    color: #000000;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+code {
+    font-family: 'Source Code Pro', monospace;
 }
