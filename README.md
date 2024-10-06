@@ -352,12 +352,12 @@ export function AccessibilityPage() {
 
 Además, **FlexJS** permite la **integración de librerías y plugins** de terceros y el uso de **CSS personalizado**, lo que hace que el framework sea adaptable a cualquier flujo de trabajo o preferencia de estilo.
 
-## Detalles del Framework FlexJS
+### Detalles del Framework FlexJS
 
 Conoce cómo funciona **FlexJS**, su estructura modular y cómo optimiza el desarrollo web moderno.
 **FlexJS** está diseñado para optimizar el desarrollo web moderno, brindando flexibilidad y personalización en cada aspecto de la aplicación. A continuación, se detallan algunas de sus características clave:
 
-**Enrutamiento Dinámico y Renderizado**
+### **Enrutamiento Dinámico y Renderizado**
 **FlexJS** utiliza un único archivo index.html para manejar la renderización de todo el contenido de la aplicación. La navegación se realiza sin recargar la página, gracias a un sistema de enrutamiento dinámico gestionado por router.js y render.js. Este sistema se encarga de interpretar la URL del navegador, extraer parámetros y renderizar la página adecuada sin necesidad de recargar toda la interfaz.
 
 El proceso incluye:
@@ -365,7 +365,7 @@ El proceso incluye:
 Router.js: Este archivo descompone la URL y extrae los parámetros necesarios para determinar qué componente o página debe cargarse.
 Render.js: Este archivo se encarga de inyectar dinámicamente el contenido en el DOM, haciendo que la navegación dentro de la aplicación sea fluida y sin interrupciones visuales.
 
-**Contexto Progresivo y Persistencia de Datos**
+### **Contexto Progresivo y Persistencia de Datos**
 Para gestionar el estado de la aplicación, **FlexJS** implementa un sistema de contexto progresivo, el cual almacena los datos localmente utilizando localStorage. Esto permite mantener la persistencia de la información del usuario a lo largo de la sesión, incluso si se recarga la página o se cierra el navegador.
 
 El flujo de persistencia incluye:
@@ -374,13 +374,13 @@ Contexto Inicial: Al iniciar la aplicación, se carga información predefinida e
 Contexto Progresivo: A medida que el usuario interactúa con la aplicación, el contexto se actualiza dinámicamente, almacenando datos clave de manera eficiente.
 ContextStorage.js: Este archivo interactúa directamente con el localStorage, facilitando la lectura y escritura de los datos de contexto, y asegurando que estos estén disponibles en futuras sesiones.
 
-**Funcionalidades de Accesibilidad y Traducción**
+### **Funcionalidades de Accesibilidad y Traducción**
 **FlexJS** se compromete con la accesibilidad y la internacionalización, facilitando una experiencia inclusiva para todos los usuarios. Las principales características incluyen:
 
 Traducción Dinámica: El framework permite cambiar el idioma de la aplicación en tiempo real, cargando las traducciones necesarias desde archivos específicos sin afectar el rendimiento.
 Accesibilidad Mejorada: **FlexJS** incluye funcionalidades diseñadas para mejorar la experiencia de usuarios con discapacidades visuales o de percepción de colores, como el soporte para lectura de pantalla y modos de alto contraste.
----
 
 **Este archivo está sujeto a cambios a medida que el framework evolucione**.
 
 © 2024 FlexJS - Desarrollado por [AmericaPixelGames.com](https://americapixelgames.com)
+
