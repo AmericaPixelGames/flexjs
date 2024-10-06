@@ -9,6 +9,10 @@ Además, **FlexJS** permite la **implementación libre de librerías y plugins e
 
 **FlexJS** es un framework rápido, modular y completamente enfocado en **JavaScript (99%)** y **HTML5 (1%)**. Su principal característica es la creación de componentes reutilizables y **totalmente personalizables**, lo que permite construir interfaces complejas con flexibilidad, mejorando la seguridad y la eficiencia del desarrollo web. Ya sea que estés creando una página web sencilla o una aplicación compleja, **FlexJS** te ofrece herramientas poderosas y fáciles de integrar para acelerar tu desarrollo, con la posibilidad de **escalar** tu aplicación sin perder rendimiento ni organización.
 
+## ¿Para quién es FlexJS?
+
+**FlexJS** es ideal tanto para desarrolladores principiantes como avanzados. Su estructura modular permite comenzar rápidamente con componentes predefinidos, mientras que su flexibilidad y **capacidad de personalización** asegura que cualquier aspecto del framework puede ser ajustado o extendido para satisfacer las necesidades del proyecto.
+
 ## Características clave de FlexJS
 
 ### 1. **Modularidad y Personalización Completa**
@@ -346,12 +350,6 @@ export function AccessibilityPage() {
 }
 
 ```
-## ¿Para quién es FlexJS?
-
-**FlexJS** es ideal tanto para desarrolladores principiantes como avanzados. Su estructura modular permite comenzar rápidamente con componentes predefinidos, mientras que su flexibilidad y **capacidad de personalización** asegura que cualquier aspecto del framework puede ser ajustado o extendido para satisfacer las necesidades del proyecto.
-
-Además, **FlexJS** permite la **integración de librerías y plugins** de terceros y el uso de **CSS personalizado**, lo que hace que el framework sea adaptable a cualquier flujo de trabajo o preferencia de estilo.
-
 ### Detalles del Framework FlexJS
 
 Conoce cómo funciona **FlexJS**, su estructura modular y cómo optimiza el desarrollo web moderno.
@@ -362,9 +360,123 @@ Conoce cómo funciona **FlexJS**, su estructura modular y cómo optimiza el desa
 
 El proceso incluye:
 
-Router.js: Este archivo descompone la URL y extrae los parámetros necesarios para determinar qué componente o página debe cargarse.
-Render.js: Este archivo se encarga de inyectar dinámicamente el contenido en el DOM, haciendo que la navegación dentro de la aplicación sea fluida y sin interrupciones visuales.
+router.js: Este archivo descompone la URL y extrae los parámetros necesarios para determinar qué componente o página debe cargarse.
+ **Router.js**
+```javascript
+import { renderPage } from './render.js';
+import { HomePage } from '../pages/home.js';
+import { AboutPage } from '../pages/about.js';
+import { DetailsPage } from '../pages/details.js';  // Ejemplo de página dinámica
 
+// Definir las rutas y las páginas asociadas
+const routes = {
+    '/': HomePage,
+    '/about': AboutPage,
+    '/details/:id': DetailsPage,  // Ruta dinámica
+};
+
+// Función para extraer parámetros dinámicos de una ruta
+function extractParams(route, url) {
+    const routeParts = route.split('/');
+    const urlParts = url.split('/');
+    const params = {};
+
+    routeParts.forEach((part, index) => {
+        if (part.startsWith(':')) {
+            const paramName = part.slice(1);  // Quita el ":"
+            params[paramName] = urlParts[index];  // Extrae el valor del parámetro
+        }
+    });
+
+    return params;
+}
+
+// Función que compara la ruta y la URL actual
+function matchRoute(route, url) {
+    const routeParts = route.split('/');
+    const urlParts = url.split('/');
+
+    if (routeParts.length !== urlParts.length) {
+        return false;  // Diferente número de partes, no hay coincidencia
+    }
+
+    return routeParts.every((part, index) => {
+        return part.startsWith(':') || part === urlParts[index];
+    });
+}
+
+// Función que obtiene la ruta actual de la URL (sin hash)
+function getCurrentPath() {
+    return window.location.pathname || '/';
+}
+
+// Función que gestiona el enrutamiento
+function router() {
+    const path = getCurrentPath();
+
+    // Buscar coincidencias de la ruta en la lista de rutas
+    const matchedRoute = Object.keys(routes).find(route => matchRoute(route, path));
+
+    if (matchedRoute) {
+        // Extraer parámetros si es una ruta dinámica
+        const params = extractParams(matchedRoute, path);
+        const page = routes[matchedRoute];
+
+        // Verificar si la página devuelve un layout y postRender
+        const { layout, postRender } = page(params);  // Pasar los parámetros a la página
+
+        if (layout) {
+            renderPage(layout, 'app', postRender);  // Renderizar con layout y postRender
+        } else {
+            renderPage(page(params));  // Si no hay layout, renderizar directamente
+        }
+    } else {
+        renderPage('Página no encontrada');
+    }
+}
+
+// Función para navegar a una nueva ruta
+export function navigateTo(url) {
+    window.history.pushState({}, '', url);  // Actualiza la URL sin recargar la página
+    router();  // Llama al enrutador para cargar la nueva ruta
+}
+
+// Escuchar el evento "popstate" para manejar el botón de atrás/adelante del navegador
+window.addEventListener('popstate', router);
+
+// Llamar al router al cargar la página por primera vez
+window.addEventListener('load', router);
+
+```
+render.js: Este archivo se encarga de inyectar dinámicamente el contenido en el DOM, haciendo que la navegación dentro de la aplicación sea fluida y sin interrupciones visuales.
+ **Render.js**
+```javascript
+// Archivo: js/render.js
+
+/**
+ * Función de renderizado que inserta contenido HTML dinámicamente en el DOM
+ * y ejecuta cualquier lógica adicional (eventos) después del renderizado.
+ * 
+ * @param {string} component - El HTML del componente o página a renderizar.
+ * @param {string} target - El selector del contenedor donde se renderizará el contenido.
+ * @param {Function} [postRender] - Función opcional que se ejecuta después de renderizar el contenido.
+ */
+export function renderPage(component, target = 'app', postRender = null) {
+    const container = document.getElementById(target); 
+    
+    if (container&& component!=undefined) {
+        // Renderiza el contenido HTML en el contenedor especificado
+        container.innerHTML = component;
+
+        // Si se pasa una función postRender, se ejecuta después del renderizado
+        if (typeof postRender === 'function') {
+            postRender();
+        }
+    } else {
+        //console.error(`Contenedor ${target} no encontrado en el DOM.`);
+    }
+}
+```
 ### **Contexto Progresivo y Persistencia de Datos**
 Para gestionar el estado de la aplicación, **FlexJS** implementa un sistema de contexto progresivo, el cual almacena los datos localmente utilizando localStorage. Esto permite mantener la persistencia de la información del usuario a lo largo de la sesión, incluso si se recarga la página o se cierra el navegador.
 
@@ -372,12 +484,168 @@ El flujo de persistencia incluye:
 
 Contexto Inicial: Al iniciar la aplicación, se carga información predefinida en el contexto para configurar el estado inicial.
 Contexto Progresivo: A medida que el usuario interactúa con la aplicación, el contexto se actualiza dinámicamente, almacenando datos clave de manera eficiente.
-ContextStorage.js: Este archivo interactúa directamente con el localStorage, facilitando la lectura y escritura de los datos de contexto, y asegurando que estos estén disponibles en futuras sesiones.
+context.js: Este archivo interactúa directamente con el contextStorage.js, facilitando la lectura y escritura de los datos de contexto ContextoProgresivo, y asegurando que estos estén disponibles en futuras sesiones.
+ **context.js**
+```javascript
+// context.js - Gestión del contexto de la aplicación
+import contextStorage from './contextStorage.js';
+const context = (() => {
+    // El contexto inicial cargado cuando la app se inicia
+    const initialContext = {
+        appName: "Mi Framework",
+        version: "1.0",
+        user: {
+            name: "Usuario",
+        },
+        selectedTheme: "blue",
+        highContrast: 'false',
+        fontSize:"1",
+        colorBlindMode: "none"
+    };
+    // El contexto progresivo donde el usuario agrega o modifica datos
+    let progressiveContext = {};
 
+    // Cargar el contexto inicial en memoria y en localStorage al iniciar la app
+    function loadInitialContext() {
+        contextStorage.setItem('appContext', initialContext);  // Guarda el contexto inicial en localStorage
+        progressiveContext = { ...initialContext };  // Carga el contexto inicial en memoria
+    }
+    // Obtener el contexto completo (progresivo o inicial) en tiempo real
+    function getContext() {
+        return progressiveContext;
+    }
+    // Obtener un valor específico del contexto por su clave (key) para initialContext o progressiveContext
+    function getContextValue(key, contextType = 'progressive') {
+        if (contextType === 'initial') {
+            return getNestedValue(initialContext, key);
+        } else {
+            return getNestedValue(progressiveContext, key);
+        }
+    }
+    // Actualizar un valor específico en el contexto progresivo y almacenarlo en localStorage
+    function updateContext(key, value) {
+        setNestedValue(progressiveContext, key, value);
+        contextStorage.setItem('appContext', progressiveContext);  // Guarda el contexto actualizado en localStorage
+    }
+    // Función para agregar nuevos datos al contexto progresivo
+    function addToContext(key, value) {
+        if (!getNestedValue(progressiveContext, key)) {
+            // Solo agregar si la clave no existe en el contexto progresivo
+            setNestedValue(progressiveContext, key, value);
+            contextStorage.setItem('appContext', progressiveContext);  // Actualizar el almacenamiento en localStorage
+        } else {
+            console.warn(`La clave ${key} ya existe en el contexto progresivo.`);
+        }
+    }
+    // Eliminar una clave específica del contexto progresivo
+    function removeFromContext(key) {
+        deleteNestedValue(progressiveContext, key);
+        contextStorage.setItem('appContext', progressiveContext);  // Actualiza el localStorage
+    }
+    // Cargar el contexto progresivo desde localStorage (si existe)
+    function loadProgressiveContext() {
+        const storedContext = contextStorage.getItem('appContext');
+        if (storedContext) {
+            progressiveContext = { ...storedContext };  // Cargar el contexto guardado en memoria
+        } else {
+            loadInitialContext();  // Si no hay contexto guardado, carga el inicial
+        }
+    }
+    // Función utilitaria para obtener un valor anidado por clave
+    function getNestedValue(obj, key) {
+        return key.split('.').reduce((o, i) => (o ? o[i] : undefined), obj);
+    }
+    // Función utilitaria para actualizar un valor anidado por clave
+    function setNestedValue(obj, key, value) {
+        const keys = key.split('.');
+        keys.reduce((o, i, idx) => {
+            if (idx === keys.length - 1) {
+                o[i] = value;
+            } else {
+                o[i] = o[i] || {};
+            }
+            return o[i];
+        }, obj);
+    }
+    // Función utilitaria para eliminar un valor anidado por clave
+    function deleteNestedValue(obj, key) {
+        const keys = key.split('.');
+        keys.reduce((o, i, idx) => {
+            if (idx === keys.length - 1 && o) {
+                delete o[i];
+            }
+            return o ? o[i] : undefined;
+        }, obj);
+    }
+    // Exportar las funciones del contexto
+    return {
+        loadInitialContext,
+        getContext,
+        getContextValue,
+        updateContext,
+        addToContext,
+        removeFromContext,
+        loadProgressiveContext
+    };
+
+})();
+export default context;
+```
+contextStorage.js: Este archivo interactúa directamente con el localStorage, facilitando la lectura y escritura de los datos de contexto, y asegurando que estos estén disponibles en futuras sesiones.
+ **contextStorage.js**
+```javascript
+// contextStorage.js - Gestión del localStorage
+const contextStorage = (() => {
+    // Guarda un objeto JSON en localStorage con una clave específica
+    function setItem(key, value) {
+        try {
+            const valueString = JSON.stringify(value);
+            localStorage.setItem(key, valueString);
+        } catch (error) {
+            console.error('Error al guardar en localStorage:', error);
+        }
+    }
+    // Obtiene un objeto JSON de localStorage basado en la clave
+    function getItem(key) {
+        try {
+            const valueString = localStorage.getItem(key);
+            return valueString ? JSON.parse(valueString) : null;
+        } catch (error) {
+            console.error('Error al recuperar de localStorage:', error);
+            return null;
+        }
+    }
+    // Elimina un elemento del localStorage basado en la clave
+    function removeItem(key) {
+        try {
+            localStorage.removeItem(key);
+        } catch (error) {
+            console.error('Error al eliminar de localStorage:', error);
+        }
+    }
+    // Limpia todo el localStorage (opcional si quieres reiniciar el almacenamiento)
+    function clearStorage() {
+        try {
+            localStorage.clear();
+        } catch (error) {
+            console.error('Error al limpiar el localStorage:', error);
+        }
+    }
+    // Exporta las funciones que estarán disponibles externamente
+    return {
+        setItem,
+        getItem,
+        removeItem,
+        clearStorage
+    };
+})();
+export default contextStorage;
+```
 ### **Funcionalidades de Accesibilidad y Traducción**
 **FlexJS** se compromete con la accesibilidad y la internacionalización, facilitando una experiencia inclusiva para todos los usuarios. Las principales características incluyen:
 
 Traducción Dinámica: El framework permite cambiar el idioma de la aplicación en tiempo real, cargando las traducciones necesarias desde archivos específicos sin afectar el rendimiento.
+En traducción el index.js es el encargado de servir las variables constantes de tipo json que contienen las traducciones según el idioma seleccionado.
 Accesibilidad Mejorada: **FlexJS** incluye funcionalidades diseñadas para mejorar la experiencia de usuarios con discapacidades visuales o de percepción de colores, como el soporte para lectura de pantalla y modos de alto contraste.
 
 **Este archivo está sujeto a cambios a medida que el framework evolucione**.
