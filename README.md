@@ -10,6 +10,10 @@ This is the English version of the documentation.
 - [Read in Spanish](README.es.md)
 - [Read in English](README.en.md)
 
+<p align="center">
+  <img src="https://github.com/AmericaPixelGames/flexjs/blob/main/img/logo2.png" alt="Logo de FlexJS" width="300"/>
+</p>
+
 ## English Versio
 
 
@@ -671,6 +675,9 @@ Enhanced Accessibility: **FlexJS** includes features designed to improve the exp
 
 © 2024 FlexJS - Developed by [AmericaPixelGames.com](https://americapixelgames.com)
 
+<p align="center">
+  <img src="https://github.com/AmericaPixelGames/flexjs/blob/main/img/logo2.png" alt="Logo de FlexJS" width="300"/>
+</p>
 
 ## Versión en Español
 
