@@ -99,7 +99,7 @@ const audioComponent = Audio({
                 </section>
 
                 <!-- Audio Component Properties and Functions Table -->
-                <section class="mt-5">
+                <section class="mt-5 table-responsive">
                     <h3 class="text-center">${translations.multimediaPage_properties_heading} (Audio)</h3>
                     <table class="table table-bordered">
                         <thead>

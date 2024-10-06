@@ -29,6 +29,26 @@ export function BasicLayout(content, options = {}) {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <meta http-equiv="X-UA-Compatible" content="ie=edge">
                 <title>${title}</title>
+
+                <!-- Metadatos del framework FlexJS -->
+                <meta name="description" content="FlexJS is a modern JavaScript framework designed for building flexible, fast, and accessible user interfaces.">
+                <meta name="author" content="AmericaPixelGames">
+                <meta name="keywords" content="FlexJS, JavaScript, Framework, UI, Accessibility, Web Development, Modular">
+
+                <!-- Metadatos para redes sociales -->
+                <meta property="og:title" content="FlexJS - Modern JavaScript Framework">
+                <meta property="og:description" content="FlexJS helps developers create fast, modular, and accessible web applications.">
+                <meta property="og:image" content="https://flexjs.americapixelgames.com/img/logo2.png"> <!-- Ruta de la imagen representativa -->
+                <meta property="og:url" content="https://flexjs.americapixelgames.com">
+                <meta name="twitter:card" content="summary_large_image">
+                <meta name="twitter:site" content="@AmericaPixelGames">
+                <meta name="twitter:title" content="FlexJS - Modern JavaScript Framework">
+                <meta name="twitter:description" content="Explore FlexJS, the next-gen JavaScript framework for building user interfaces.">
+                <meta name="twitter:image" content="/img/flexjs-og-image.png">
+
+                <!-- CSS -->
+                <link rel="stylesheet" href="/css/global.css">
+                <link rel="stylesheet" href="/css/styles.css">
             </head>
             <body>
                 <header>

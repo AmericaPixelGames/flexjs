@@ -59,7 +59,7 @@ export function TabsPage() {
                 })}
             </section>
             <!-- Table Explaining Tabs Component Properties and Functions -->
-            <section class="mt-5">
+            <section class="mt-5 table-responsive">
                 <h3 class="text-center">${translations.tabsPage_propertiesFunctions}</h3>
                 <table class="table table-bordered">
                     <thead>
