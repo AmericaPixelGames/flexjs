@@ -1,3 +1,4 @@
+//BasicLayout
 import { Navbar,setupNavbarEvents } from '../components/core/navbar.js';
 import { Footer } from '../components/core/footer.js';
 import { loadTranslations, getUserLanguage } from '../translations/index.js';  // Cargar traducciones
