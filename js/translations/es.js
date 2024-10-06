@@ -94,6 +94,10 @@ export const es = {
     about_marvin_description: 'Soy de Costa Rica y me apasiona programar y crear cosas geniales...',
     about_marvin_projects: 'Algunos de mis proyectos destacados incluyen:',
     about_marvin_hobbies: 'Cuando no estoy programando, me encanta jugar videojuegos.',
+    about_repository_heading: "Repositorio FlexJS",
+    about_repository_intro: "Puedes ver el código fuente del proyecto FlexJS en GitHub haciendo clic en el siguiente enlace:",
+    about_americapixelgames_heading: "Acerca de America Pixel Games",
+    about_americapixelgames_description: "América Pixel Games es una entidad dedicada a la concepción y desarrollo de juegos que se sumergen en el encantador mundo del pixel art. Fundada en enero de 2023, nuestra organización se ha erigido como pionera en la producción de videojuegos que abrazan la estética retro y distintiva del pixel art.",
     //Modal Page
     modalPage_heading: 'Componente Modal',
     modalPage_intro: 'El componente Modal permite crear ventanas emergentes personalizadas para mostrar contenido dinámico y recibir entradas del usuario.',

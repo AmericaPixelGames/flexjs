@@ -142,6 +142,19 @@ export function AboutPage() {
                 </div>
             </div>
         </section>
+
+        <!-- Enlace al Repositorio de FlexJS -->
+        <section class="container mt-5" aria-labelledby="about-repository">
+            <h2 id="about-repository">${translations.about_repository_heading}</h2>
+            <p>${translations.about_repository_intro}</p>
+            <a href="https://github.com/AmericaPixelGames/flexjs" target="_blank" class="btn btn-primary">Visitar Repositorio en GitHub</a>
+        </section>
+
+        <!-- Información sobre America Pixel Games -->
+        <section class="container mt-5" aria-labelledby="about-americapixelgames">
+            <h2 id="about-americapixelgames">${translations.about_americapixelgames_heading}</h2>
+            <p>${translations.about_americapixelgames_description}</p>
+        </section>
     `;
 
     const postRender = () => {

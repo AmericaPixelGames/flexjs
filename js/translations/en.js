@@ -94,6 +94,10 @@ export const en = {
     about_marvin_description: 'I am from Costa Rica and I love programming and creating cool things...',
     about_marvin_projects: 'Some of my featured projects include:',
     about_marvin_hobbies: 'When I\'m not coding, I love playing video games.',
+    about_repository_heading: "FlexJS Repository",
+    about_repository_intro: "You can view the source code of the FlexJS project on GitHub by clicking the following link:",
+    about_americapixelgames_heading: "About America Pixel Games",
+    about_americapixelgames_description: "America Pixel Games is an entity dedicated to the conception and development of games immersed in the charming world of pixel art. Founded in January 2023, our organization has established itself as a pioneer in producing video games that embrace the retro and distinctive aesthetics of pixel art.",
     //Modal Page
     modalPage_heading: 'Modal Component',
     modalPage_intro: 'The Modal component allows you to create custom pop-up windows to display dynamic content and receive user input.',
