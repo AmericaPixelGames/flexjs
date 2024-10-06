@@ -1,47 +1,47 @@
-// contextStorage.js - localStorage management
+// contextStorage.js - Gestión del localStorage
 
 const contextStorage = (() => {
     
-    // Save a JSON object in localStorage with a specific key
+    // Guarda un objeto JSON en localStorage con una clave específica
     function setItem(key, value) {
         try {
             const valueString = JSON.stringify(value);
             localStorage.setItem(key, valueString);
         } catch (error) {
-            console.error('Error saving to localStorage:', error);
+            console.error('Error al guardar en localStorage:', error);
         }
     }
 
-    // Retrieve a JSON object from localStorage based on the key
+    // Obtiene un objeto JSON de localStorage basado en la clave
     function getItem(key) {
         try {
             const valueString = localStorage.getItem(key);
             return valueString ? JSON.parse(valueString) : null;
         } catch (error) {
-            console.error('Error retrieving from localStorage:', error);
+            console.error('Error al recuperar de localStorage:', error);
             return null;
         }
     }
 
-    // Remove an item from localStorage based on the key
+    // Elimina un elemento del localStorage basado en la clave
     function removeItem(key) {
         try {
             localStorage.removeItem(key);
         } catch (error) {
-            console.error('Error removing from localStorage:', error);
+            console.error('Error al eliminar de localStorage:', error);
         }
     }
 
-    // Clear all localStorage (optional if you want to reset the storage)
+    // Limpia todo el localStorage (opcional si quieres reiniciar el almacenamiento)
     function clearStorage() {
         try {
             localStorage.clear();
         } catch (error) {
-            console.error('Error clearing localStorage:', error);
+            console.error('Error al limpiar el localStorage:', error);
         }
     }
 
-    // Export the functions to be available externally
+    // Exporta las funciones que estarán disponibles externamente
     return {
         setItem,
         getItem,

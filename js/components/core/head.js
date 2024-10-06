@@ -1,7 +1,7 @@
-// File: js/components/head.js
+// Archivo: js/components/head.js
 
 export function Head({ cssFiles = [], jsFiles = [] }) {
-    // Function to add CSS files to the head
+    // Función para agregar archivos CSS al head
     const addCSS = (cssFiles) => {
         cssFiles.forEach(file => {
             const link = document.createElement('link');
@@ -11,20 +11,20 @@ export function Head({ cssFiles = [], jsFiles = [] }) {
         });
     };
 
-    // Function to add JS files to the head
+    // Función para agregar archivos JS al head
     const addJS = (jsFiles) => {
         jsFiles.forEach(file => {
             const script = document.createElement('script');
             script.src = file;
-            script.async = true; // Load scripts asynchronously
+            script.async = true; // Carga los scripts de manera asíncrona
             document.head.appendChild(script);
         });
     };
 
-    // Insert the CSS and JS files into the head
+    // Insertar los archivos CSS y JS en el head
     addCSS(cssFiles);
     addJS(jsFiles);
 
-    // The component doesn't need to return any HTML, just add to the head
+    // El componente no necesita devolver ningún HTML, solo agregar al head
     return '';
 }

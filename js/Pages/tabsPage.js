@@ -1,11 +1,11 @@
 import { BasicLayout, postRender as basicLayoutPostRender } from '../layouts/BasicLayout.js'; 
 import { Tabs, setupTabs } from '../components/core/tab.js';
-import { Image } from '../components/core/image.js';  // Import the image component
+import { Image } from '../components/core/image.js';  // Importar el componente de imagen
 import { Head } from '../components/core/head.js';
-import { loadTranslations, getUserLanguage } from '../translations/index.js';  // Import translations
+import { loadTranslations, getUserLanguage } from '../translations/index.js';  // Importar traducciones
 
 export function TabsPage() {
-    // Get the user's language and load translations
+    // Obtener el idioma del usuario y cargar las traducciones
     const userLanguage = getUserLanguage();
     const translations = loadTranslations(userLanguage);
 
@@ -14,7 +14,7 @@ export function TabsPage() {
             <h2 class="text-center">${translations.tabsPage_heading}</h2>
             <p>${translations.tabsPage_intro}</p>
             <section class="mt-5">
-                <!-- Horizontal Tabs Example -->
+                <!-- Ejemplo de Tabs Horizontales -->
                 <h3 class="mt-4">${translations.tabsPage_horizontalHeading}</h3>
                 ${Tabs({
                     id: 'horizontal',
@@ -25,18 +25,18 @@ export function TabsPage() {
                         { title: translations.tabsPage_tab3, content: `<p>${translations.tabsPage_tab3Content}</p>` }
                     ]
                 })}
-                <!-- Example Image -->
+                <!-- Ejemplo en Imagen -->
     
                 <h3 class="text-center">${translations.tabsPage_exampleImplementation}</h3>
                 ${Image({
-                    url: '/img/examples/tab1.png',   // Image path for the code example
-                    width: '100%',                 // Responsive image
-                    height: 'auto',                // Auto height
-                    responsive: true               // Ensure adaptability
+                    url: '/img/examples/tab1.png',   // Ruta de la imagen del ejemplo de código
+                    width: '100%',                 // Imagen responsive
+                    height: 'auto',                // Altura automática
+                    responsive: true               // Asegurar que sea adaptable
                 })}
             </section>
             <section class="mt-5">
-                <!-- Vertical Tabs Example -->
+                <!-- Ejemplo de Tabs Verticales -->
                 <h3 class="mt-5">${translations.tabsPage_verticalHeading}</h3>
                 ${Tabs({
                     id: 'vertical',
@@ -52,13 +52,13 @@ export function TabsPage() {
             <section class="mt-5">
                 <h3 class="text-center">${translations.tabsPage_exampleImplementation}</h3>
                 ${Image({
-                    url: '/img/examples/tab2.png',   // Image path for the code example
-                    width: '100%',                 // Responsive image
-                    height: 'auto',                // Auto height
-                    responsive: true               // Ensure adaptability
+                    url: '/img/examples/tab2.png',   // Ruta de la imagen del ejemplo de código
+                    width: '100%',                 // Imagen responsive
+                    height: 'auto',                // Altura automática
+                    responsive: true               // Asegurar que sea adaptable
                 })}
             </section>
-            <!-- Table Explaining Tabs Component Properties and Functions -->
+            <!-- Tabla explicativa de las propiedades y funciones del componente Tabs -->
             <section class="mt-5">
                 <h3 class="text-center">${translations.tabsPage_propertiesFunctions}</h3>
                 <table class="table table-bordered">
@@ -105,13 +105,13 @@ export function TabsPage() {
     return {
         layout: BasicLayout(content, { 
             title: 'FlexJS', 
-            footerText: '© 2024 FlexJS - Developed by <a href="https://americapixelgames.com" target="_blank">AmericaPixelGames.com</a>',
+            footerText: '© 2024 FlexJS - Desarrollado por <a href="https://americapixelgames.com" target="_blank">AmericaPixelGames.com</a>',
             head: Head({
                 cssFiles: [
-                    //'/css/styles.css', // Example stylesheet
+                    //'/css/styles.css', // Ejemplo de hoja de estilos
                 ],
                 jsFiles: [
-                    //'/js/utils.js', // Example JS file
+                    //'/js/utils.js', // Ejemplo de archivo JS
                 ]
             }) 
         }),

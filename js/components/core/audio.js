@@ -1,14 +1,14 @@
-import { loadTranslations, getUserLanguage } from '../../translations/index.js';  // Load translations
+import { loadTranslations, getUserLanguage } from '../../translations/index.js';  // Cargar las traducciones
 
 let mediaRecorder = null;
-let stream = null;  // Global variable to hold the stream
+let stream = null;  // Variable global para mantener el stream
 let audioBlob = null;
 let audioBase64 = null;
-let selectedMic = null;  // Selected microphone
-// Load translations based on the user's language
+let selectedMic = null;  // Micrófono seleccionado
+// Cargar las traducciones según el idioma del usuario
 const userLanguage = getUserLanguage();
 const translations = await loadTranslations(userLanguage);
-// Function to handle the countdown before starting the recording
+// Función para manejar el conteo antes de iniciar la grabación
 async function startCountdown() {
     return new Promise((resolve) => {
         let countdown = 3;
@@ -22,55 +22,55 @@ async function startCountdown() {
             if (countdown === 0) {
                 clearInterval(interval);
                 countdownElement.style.display = 'none';
-                resolve();  // Countdown finished
+                resolve();  // Conteo terminado
             }
         }, 1000);
     });
 }
 
-// Function to handle audio recording
+// Función para manejar la grabación de audio
 async function handleAudioRecording(selectedMic, onBase64Ready) {
     try {
-        // Set up audio constraints with the selected microphone
+        // Configurar las restricciones de audio con el micrófono seleccionado
         const constraints = {
             audio: { deviceId: selectedMic ? { exact: selectedMic } : true }
         };
 
-        // Get the audio stream
+        // Obtener el stream de audio
         stream = await navigator.mediaDevices.getUserMedia(constraints);
 
-        // Wait for the 3-second countdown before starting the recording
+        // Esperar el conteo de 3 segundos antes de iniciar la grabación
         await startCountdown();
 
-        // Start recording
+        // Iniciar la grabación
         mediaRecorder = new MediaRecorder(stream);
         const recordedChunks = [];
 
-        // Handle available data from the recording
+        // Manejar los datos disponibles de la grabación
         mediaRecorder.ondataavailable = function (event) {
             if (event.data.size > 0) {
                 recordedChunks.push(event.data);
             }
         };
 
-        // When recording stops, create an audio file
+        // Cuando se detiene la grabación, crear un archivo de audio
         mediaRecorder.onstop = function () {
             audioBlob = new Blob(recordedChunks, { type: 'audio/webm' });
             const audioURL = URL.createObjectURL(audioBlob);
 
-            // Display the recorded audio in the preview
+            // Mostrar el audio grabado en la vista previa
             const audioElement = document.getElementById('audio-preview');
-            audioElement.srcObject = null;  // Disconnect the microphone stream
-            audioElement.src = audioURL;    // Show the recorded audio
+            audioElement.srcObject = null;  // Desconectar el stream del micrófono
+            audioElement.src = audioURL;    // Mostrar el audio grabado
             audioElement.controls = true;
 
-            // Enable the download button
+            // Habilitar el botón de descarga
             const downloadBtn = document.getElementById('download-audio-btn');
             downloadBtn.href = audioURL;
-            downloadBtn.download = 'audio_recording.webm';
+            downloadBtn.download = 'grabacion_audio.webm';
             downloadBtn.style.display = 'inline-block';
 
-            // Convert the recorded file to Base64 and call the callback
+            // Convertir el archivo grabado a Base64 y llamar al callback
             const reader = new FileReader();
             reader.onloadend = function () {
                 audioBase64 = reader.result;
@@ -81,48 +81,48 @@ async function handleAudioRecording(selectedMic, onBase64Ready) {
             reader.readAsDataURL(audioBlob);
         };
 
-        // Start recording and show the pause and stop buttons
+        // Comenzar la grabación y mostrar los botones de pausa y detener
         mediaRecorder.start();
         document.getElementById('pause-audio-btn').style.display = 'inline-block';
         document.getElementById('stop-audio-btn').style.display = 'inline-block';
 
     } catch (error) {
-        console.error('Error recording audio:', error);
+        console.error('Error grabando audio:', error);
     }
 }
 
-// Load audio input devices (microphones)
+// Cargar los dispositivos de entrada de audio (micrófonos)
 export async function loadAudioDevices() {
     try {
         const devices = await navigator.mediaDevices.enumerateDevices();
         const audioInputDevices = devices.filter(device => device.kind === 'audioinput');
 
-        // Populate the microphone select options
+        // Popular las opciones en el select de micrófono
         const micSelect = document.getElementById('mic-select-audio');
-        micSelect.innerHTML = '';  // Clear the select before populating
+        micSelect.innerHTML = '';  // Limpiar el select antes de llenarlo
 
         audioInputDevices.forEach(device => {
             const option = document.createElement('option');
             option.value = device.deviceId;
-            option.text = device.label || `Microphone ${micSelect.length + 1}`;
+            option.text = device.label || `Micrófono ${micSelect.length + 1}`;
             micSelect.appendChild(option);
         });
 
-        // Handle microphone selection
+        // Manejar la selección de micrófono
         micSelect.addEventListener('change', (event) => {
-            selectedMic = event.target.value;  // Store the selected microphone ID
+            selectedMic = event.target.value;  // Almacena el ID del micrófono seleccionado
         });
 
-        // Select the first microphone by default if available
+        // Seleccionar el primer micrófono por defecto si existe
         if (audioInputDevices.length > 0) {
             selectedMic = audioInputDevices[0].deviceId;
         }
     } catch (error) {
-        console.error('Error loading audio devices:', error);
+        console.error('Error al cargar los dispositivos de audio:', error);
     }
 }
 
-// Audio Component
+// Componente de Audio
 export function Audio({ mode = 'play', audioUrl = '', onBase64Ready = null }) {
     if (mode === 'play') {
         return `
@@ -149,37 +149,37 @@ export function Audio({ mode = 'play', audioUrl = '', onBase64Ready = null }) {
         </div>
     `;
 }
-// Pause or resume audio recording
+// Pausar o reanudar la grabación de audio
 function togglePauseRecording() {
     const pauseBtn = document.getElementById('pause-audio-btn');
 
     if (mediaRecorder && mediaRecorder.state === 'recording') {
         mediaRecorder.pause();
-        pauseBtn.innerText = 'Resume';
+        pauseBtn.innerText = 'Reanudar';
     } else if (mediaRecorder && mediaRecorder.state === 'paused') {
         mediaRecorder.resume();
-        pauseBtn.innerText = 'Pause';
+        pauseBtn.innerText = 'Pausar';
     }
 }
 
-// Stop audio recording
+// Detener la grabación de audio
 function stopRecording() {
     if (mediaRecorder) {
         mediaRecorder.stop();
 
-        // Stop the microphone stream
+        // Detener el stream del micrófono
         stream.getTracks().forEach(track => track.stop());
 
         document.getElementById('pause-audio-btn').style.display = 'none';
         document.getElementById('stop-audio-btn').style.display = 'none';
     }
 }
-// Event logic after rendering the Audio component
+// Lógica de eventos después de renderizar el componente Audio
 export function setupAudioEvents(onBase64Ready) {
-    // Load audio devices for this component
+    // Cargar los dispositivos de audio para este componente
     loadAudioDevices();
 
-    // Ensure the elements exist before adding the events
+    // Asegurarse de que los elementos existan antes de agregar los eventos
     const startAudioBtn = document.getElementById('start-audio-btn');
     const pauseAudioBtn = document.getElementById('pause-audio-btn');
     const stopAudioBtn = document.getElementById('stop-audio-btn');

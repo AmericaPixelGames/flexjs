@@ -1,122 +1,122 @@
-let accessibilityEnabled = false;  // Initial accessibility state
-let originalTheme = null;  // Variable to store the original theme
-let highContrastEnabled = false;  // High contrast state
-let currentZoom = 1;  // Current text zoom
+let accessibilityEnabled = false;  // Estado inicial de accesibilidad
+let originalTheme = null;  // Variable para almacenar el tema original
+let highContrastEnabled = false;  // Estado de contraste alto
+let currentZoom = 1;  // Zoom de texto actual
 
-// Main function of the accessibility component
+// Función principal del componente de accesibilidad
 export function Accessibility() {
     return `
         <div id="accessibility-container" style="position: fixed; bottom: 10px; right: 10px; background: #333; color: #fff; padding: 10px; border-radius: 5px; z-index: 1000;">
-            <p id="accessibility-message" style="color: #fff;">Do you want to activate accessible mode?</p>
-            <button id="toggle-accessibility" class="btn btn-primary">Yes</button>
+            <p id="accessibility-message" style="color: #fff;">¿Deseas activar el modo accesible?</p>
+            <button id="toggle-accessibility" class="btn btn-primary">Sí</button>
 
-            <!-- Selector for color blindness modes -->
+            <!-- Selector para modos de daltonismo -->
             <div style="margin-top: 10px;">
-                <label for="color-blind-select">Color Blind Mode:</label>
+                <label for="color-blind-select">Modo Daltonismo:</label>
                 <select id="color-blind-select" class="form-control">
-                    <option value="none">None</option>
-                    <option value="monochromacy">Monochromacy</option>
-                    <option value="protanopia">Protanopia (Red)</option>
-                    <option value="deuteranopia">Deuteranopia (Green)</option>
-                    <option value="tritanopia">Tritanopia (Blue)</option>
-                    <option value="protanomaly">Protanomaly (Weak Red)</option>
-                    <option value="deuteranomaly">Deuteranomaly (Weak Green)</option>
-                    <option value="tritanomaly">Tritanomaly (Weak Blue)</option>
+                    <option value="none">Ninguno</option>
+                    <option value="monochromacy">Monocromatismo</option>
+                    <option value="protanopia">Protanopia (Rojo)</option>
+                    <option value="deuteranopia">Deuteranopia (Verde)</option>
+                    <option value="tritanopia">Tritanopia (Azul)</option>
+                    <option value="protanomaly">Protanomalía (Rojo débil)</option>
+                    <option value="deuteranomaly">Deuteranomalía (Verde débil)</option>
+                    <option value="tritanomaly">Tritanomalía (Azul débil)</option>
                 </select>
             </div>
 
-            <!-- Text zoom control -->
+            <!-- Control de zoom de texto -->
             <div style="margin-top: 10px;">
-                <button id="increase-font" class="btn btn-secondary">Increase Text</button>
-                <button id="decrease-font" class="btn btn-secondary">Decrease Text</button>
+                <button id="increase-font" class="btn btn-secondary">Aumentar Texto</button>
+                <button id="decrease-font" class="btn btn-secondary">Disminuir Texto</button>
             </div>
 
-            <!-- High contrast -->
+            <!-- Contraste alto -->
             <div style="margin-top: 10px;">
-                <button id="toggle-contrast" class="btn btn-warning">High Contrast</button>
+                <button id="toggle-contrast" class="btn btn-warning">Contraste Alto</button>
             </div>
         </div>
     `;
 }
 
-// Function to apply or remove accessibility enhancements
+// Función para aplicar o quitar mejoras de accesibilidad
 function toggleAccessibilityFeatures() {
     const body = document.body;
 
     if (!accessibilityEnabled) {
-        // Enable accessibility
-        body.style.backgroundColor = "#000";  // Black background
-        body.style.color = "#fff";  // White text
+        // Activar accesibilidad
+        body.style.backgroundColor = "#000";  // Fondo negro
+        body.style.color = "#fff";  // Texto blanco
 
-        // Read the content out loud
+        // Leer el contenido en voz alta
         const textContent = body.innerText;
         const speech = new SpeechSynthesisUtterance(textContent);
         window.speechSynthesis.speak(speech);
 
         accessibilityEnabled = true;
 
-        // Update accessibility message and button
-        document.getElementById('accessibility-message').innerText = 'Accessible mode enabled. Do you want to disable it?';
-        document.getElementById('toggle-accessibility').innerText = 'Disable';
+        // Actualizar el mensaje de accesibilidad y el botón
+        document.getElementById('accessibility-message').innerText = 'Modo accesible activado. ¿Deseas desactivarlo?';
+        document.getElementById('toggle-accessibility').innerText = 'Desactivar';
 
-        // Save accessibility state in localStorage
+        // Guardar el estado de accesibilidad en localStorage
         localStorage.setItem('accessibilityEnabled', 'true');
     } else {
-        // Disable accessibility
-        body.style.backgroundColor = "";  // Restore original background
-        body.style.color = "";  // Restore original text color
+        // Desactivar accesibilidad
+        body.style.backgroundColor = "";  // Restaurar fondo original
+        body.style.color = "";  // Restaurar color de texto original
 
-        // Stop the speech synthesis
+        // Detener la lectura en voz alta
         window.speechSynthesis.cancel();
 
         accessibilityEnabled = false;
 
-        // Update accessibility message and button
-        document.getElementById('accessibility-message').innerText = 'Do you want to activate accessible mode?';
-        document.getElementById('toggle-accessibility').innerText = 'Activate';
+        // Actualizar el mensaje de accesibilidad y el botón
+        document.getElementById('accessibility-message').innerText = '¿Deseas activar el modo accesible?';
+        document.getElementById('toggle-accessibility').innerText = 'Activar';
 
-        // Save accessibility state in localStorage
+        // Guardar el estado de accesibilidad en localStorage
         localStorage.setItem('accessibilityEnabled', 'false');
     }
 }
 
-// Function to apply color blindness filter
+// Función para aplicar el filtro de daltonismo
 function loadColorBlindStylesheet(mode) {
     const themeLink = document.getElementById('theme-link');
     
     if (!themeLink) {
-        console.error('Element with id "theme-link" not found.');
+        console.error('No se encontró el elemento con id "theme-link".');
         return;
     }
 
-    // Restore original theme if mode is 'none'
+    // Restaurar el tema original si el modo es 'none'
     if (mode === 'none') {
         const savedOriginalTheme = localStorage.getItem('originalTheme');
         themeLink.href = savedOriginalTheme ? savedOriginalTheme : themeLink.href;
         localStorage.setItem('colorBlindMode', 'none');
     } else {
-        // Save the original theme if not already stored
+        // Guardar el tema original si aún no está almacenado
         if (!originalTheme) {
             originalTheme = themeLink.href;
-            localStorage.setItem('originalTheme', originalTheme);  // Save to localStorage
+            localStorage.setItem('originalTheme', originalTheme);  // Guardar en localStorage
         }
 
-        // Change the stylesheet to the selected color blindness theme
+        // Cambiar la hoja de estilos al tema de daltonismo seleccionado
         themeLink.href = `./css/theme/accessibility/${mode}.css`;
 
-        // Save the color blindness mode in localStorage
+        // Guardar el modo de daltonismo en localStorage
         localStorage.setItem('colorBlindMode', mode);
     }
 }
 
-// Function to increase or decrease the text size
+// Función para aumentar o disminuir el tamaño del texto
 function adjustFontSize(increase = true) {
     currentZoom = increase ? currentZoom + 0.1 : currentZoom - 0.1;
     document.body.style.zoom = currentZoom;
     localStorage.setItem('fontSize', currentZoom);
 }
 
-// Function to toggle high contrast
+// Función para activar/desactivar el contraste alto
 function toggleHighContrast() {
     const body = document.body;
     if (!highContrastEnabled) {
@@ -130,55 +130,55 @@ function toggleHighContrast() {
     }
 }
 
-// Initialize settings from localStorage
+// Inicializar configuraciones desde localStorage
 function initializeAccessibilitySettings() {
     const savedAccessibility = localStorage.getItem('accessibilityEnabled') === 'true';
     const savedColorBlindMode = localStorage.getItem('colorBlindMode') || 'none';
     const savedZoom = localStorage.getItem('fontSize') || 1;
     const savedContrast = localStorage.getItem('highContrast') === 'true';
-    originalTheme = localStorage.getItem('originalTheme');  // Retrieve the original theme if stored
+    originalTheme = localStorage.getItem('originalTheme');  // Recuperar el tema original si está almacenado
 
-    // Apply accessibility if it was enabled
+    // Aplicar accesibilidad si estaba activada
     if (savedAccessibility) {
         toggleAccessibilityFeatures();
     }
 
-    // Apply saved color blindness mode
+    // Aplicar el modo de daltonismo si había uno guardado
     if (savedColorBlindMode !== 'none') {
         loadColorBlindStylesheet(savedColorBlindMode);
     }
 
-    // Apply saved zoom level
+    // Aplicar el zoom guardado
     document.body.style.zoom = savedZoom;
     currentZoom = parseFloat(savedZoom);
 
-    // Apply high contrast if it was enabled
+    // Aplicar el contraste alto si estaba activado
     if (savedContrast) {
         toggleHighContrast();
     }
 
-    // Set the value of the color blindness selector
+    // Establecer el valor del selector de daltonismo
     document.getElementById('color-blind-select').value = savedColorBlindMode;
 }
 
-// Event logic for accessibility button and color blindness selector
+// Lógica de eventos para el botón de accesibilidad y la selección de daltonismo
 export function setupAccessibilityEvents() {
-    // Initialize settings from localStorage
+    // Inicializar configuraciones desde localStorage
     initializeAccessibilitySettings();
 
-    // Handle click event to toggle accessibility
+    // Manejar el evento de clic para alternar la accesibilidad
     document.getElementById('toggle-accessibility').addEventListener('click', toggleAccessibilityFeatures);
 
-    // Apply selected color blindness mode when the select value changes
-    document.getElementById('color-blind-select').addEventListener('change',  () => {
+    // Aplicar el modo de daltonismo seleccionado cuando cambie el valor del select
+    document.getElementById('color-blind-select').addEventListener('change',  () =>{
         const selectedMode = document.getElementById('color-blind-select').value;
         loadColorBlindStylesheet(selectedMode);
     });
 
-    // Adjust text size
+    // Ajustar el tamaño del texto
     document.getElementById('increase-font').addEventListener('click', () => adjustFontSize(true));
     document.getElementById('decrease-font').addEventListener('click', () => adjustFontSize(false));
 
-    // Toggle high contrast
+    // Activar/desactivar el contraste alto
     document.getElementById('toggle-contrast').addEventListener('click', toggleHighContrast);
 }

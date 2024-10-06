@@ -17,9 +17,9 @@ export function LanguageSwitcher() {
 export function setupLanguageSwitcher() {
     const selectElement = document.getElementById('language-select');
 
-    // Listen for language change in the select element
+    // Escuchar el cambio de idioma en el select
     selectElement.addEventListener('change', function (event) {
         const selectedLanguage = event.target.value;
-        changeLanguage(selectedLanguage);  // Change the language and reload the page
+        changeLanguage(selectedLanguage);  // Cambiar el idioma y recargar la página
     });
 }

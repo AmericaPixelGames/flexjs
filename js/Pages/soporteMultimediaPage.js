@@ -2,10 +2,10 @@ import { BasicLayout, postRender as basicLayoutPostRender } from '../layouts/Bas
 import { Video, setupVideoEvents } from '../components/core/video.js';
 import { Audio, setupAudioEvents } from '../components/core/audio.js';
 import { Head } from '../components/core/head.js';
-import { loadTranslations, getUserLanguage } from '../translations/index.js';  // Import translations
+import { loadTranslations, getUserLanguage } from '../translations/index.js';  // Importar traducciones
 
 export function SoporteMultimediaPage() {
-    // Get the user's language and load translations
+    // Obtener el idioma del usuario y cargar las traducciones
     const userLanguage = getUserLanguage();
     const translations = loadTranslations(userLanguage);
 
@@ -14,7 +14,7 @@ export function SoporteMultimediaPage() {
             <h1 class="text-center">${translations.multimediaPage_heading}</h1>
             <p class="lead text-center">${translations.multimediaPage_intro}</p>
 
-            <!-- Video Section -->
+            <!-- Sección de Video -->
             <section class="mt-5">
                 <h2 class="text-center">${translations.multimediaPage_video_heading}</h2>
                 <p>${translations.multimediaPage_video_description}</p>
@@ -25,7 +25,7 @@ export function SoporteMultimediaPage() {
                 <h3 class="mt-5">${translations.multimediaPage_video_record}</h3>
                 ${Video({ mode: 'record', onBase64Ready: handleBase64Video })}
 
-                <!-- Code Example -->
+                <!-- Ejemplo en Código -->
                 <section class="mt-5">
                     <h3 class="text-center">${translations.multimediaPage_example_heading} (Video)</h3>
                     <pre><code class="language-javascript">
@@ -34,13 +34,13 @@ import { Video } from './components/video.js';
 const videoComponent = Video({
     mode: 'record',
     onBase64Ready: (base64) => {
-        console.log("Video in Base64:", base64);
+        console.log("Video en Base64:", base64);
     }
 });
                     </code></pre>
                 </section>
 
-                <!-- Video Component Properties and Functions Table -->
+                <!-- Tabla de Propiedades y Funciones del Componente Video -->
                 <section class="mt-5">
                     <h3 class="text-center">${translations.multimediaPage_properties_heading} (Video)</h3>
                     <table class="table table-bordered">
@@ -72,7 +72,7 @@ const videoComponent = Video({
                 </section>
             </section>
 
-            <!-- Audio Section -->
+            <!-- Sección de Audio -->
             <section class="mt-5">
                 <h2 class="text-center">${translations.multimediaPage_audio_heading}</h2>
                 <p>${translations.multimediaPage_audio_description}</p>
@@ -83,7 +83,7 @@ const videoComponent = Video({
                 <h3 class="mt-5">${translations.multimediaPage_audio_record}</h3>
                 ${Audio({ mode: 'record', onBase64Ready: handleBase64Audio })}
 
-                <!-- Code Example -->
+                <!-- Ejemplo en Código -->
                 <section class="mt-5">
                     <h3 class="text-center">${translations.multimediaPage_example_heading} (Audio)</h3>
                     <pre><code class="language-javascript">
@@ -92,13 +92,13 @@ import { Audio } from './components/audio.js';
 const audioComponent = Audio({
     mode: 'record',
     onBase64Ready: (base64) => {
-        console.log("Audio in Base64:", base64);
+        console.log("Audio en Base64:", base64);
     }
 });
                     </code></pre>
                 </section>
 
-                <!-- Audio Component Properties and Functions Table -->
+                <!-- Tabla de Propiedades y Funciones del Componente Audio -->
                 <section class="mt-5">
                     <h3 class="text-center">${translations.multimediaPage_properties_heading} (Audio)</h3>
                     <table class="table table-bordered">
@@ -135,11 +135,11 @@ const audioComponent = Audio({
 
 
     function handleBase64Video(base64) {
-        console.log('Recorded video Base64:', base64);
+        console.log('Base64 del video grabado:', base64);
     }
 
     function handleBase64Audio(base64) {
-        console.log('Recorded audio Base64:', base64);
+        console.log('Base64 del audio grabado:', base64);
     }
     const postRender = () => {
         setupVideoEvents(handleBase64Video);
@@ -150,13 +150,13 @@ const audioComponent = Audio({
     return {
         layout: BasicLayout(content, { 
             title: 'FlexJS', 
-            footerText: '© 2024 FlexJS - Developed by <a href="https://americapixelgames.com" target="_blank">AmericaPixelGames.com</a>',
+            footerText: '© 2024 FlexJS - Desarrollado por <a href="https://americapixelgames.com" target="_blank">AmericaPixelGames.com</a>',
             head: Head({
                 cssFiles: [
-                    //'/css/styles.css', // Example CSS file
+                    //'/css/styles.css', // Ejemplo de hoja de estilos
                 ],
                 jsFiles: [
-                    //'/js/utils.js', // Example JS file
+                    //'/js/utils.js', // Ejemplo de archivo JS
                 ]
             })
         }),

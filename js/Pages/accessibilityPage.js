@@ -1,30 +1,30 @@
 import { BasicLayout, postRender as basicLayoutPostRender } from '../layouts/BasicLayout.js'; 
 import { Accessibility, setupAccessibilityEvents } from '../components/core/accessibility.js';
 import { Head } from '../components/core/head.js';
-import { loadTranslations, getUserLanguage } from '../translations/index.js';  // Import translations
-import { Image } from '../components/core/image.js';  // Import the Image component
+import { loadTranslations, getUserLanguage } from '../translations/index.js';  // Importar traducciones
+import { Image } from '../components/core/image.js';  // Importar el componente de imagen
 
 export function AccessibilityPage() {
-    // Get the user's language and load translations
+    // Obtener el idioma del usuario y cargar las traducciones
     const userLanguage = getUserLanguage();
     const translations = loadTranslations(userLanguage);
 
-    // Page content with translations and component description
+    // Contenido de la página con las traducciones y la descripción del componente
     const content = `
         <section class="container mt-5">
             <h2 class="text-center">${translations.accessibilityPage_heading}</h2>
             <p>${translations.accessibilityPage_description}</p>
 
-            <!-- Accessibility Component -->
+            <!-- Componente de Accesibilidad -->
             <h3>${translations.accessibilityPage_componentTitle}</h3>
-            ${Accessibility()}  <!-- Display the accessibility component -->
+            ${Accessibility()}  <!-- Mostrar el componente de accesibilidad -->
 
-            <!-- Component Description -->
+            <!-- Descripción del Componente -->
             <section class="mt-5">
                 <h3>${translations.accessibilityPage_descriptionTitle}</h3>
                 <p>${translations.accessibilityPage_descriptionContent}</p>
                 
-                <!-- Functions and Properties -->
+                <!-- Funciones y Propiedades -->
                 <h4>${translations.accessibilityPage_functionsTitle}</h4>
                 <ul>
                     <li><strong>toggleAccessibilityFeatures:</strong> ${translations.accessibilityPage_toggleAccessibilityDescription}</li>
@@ -33,14 +33,14 @@ export function AccessibilityPage() {
                     <li><strong>toggleHighContrast:</strong> ${translations.accessibilityPage_toggleContrastDescription}</li>
                 </ul>
 
-                <!-- Implementation Example (As Image) -->
+                <!-- Ejemplo de Implementación (Como Imagen) -->
                 <section class="mt-5">
                     <h4>${translations.accessibilityPage_exampleTitle}</h4>
                     ${Image({
-                        url: '/img/examples/accessibility.png',  // Path to the example image
-                        alt: 'Accessibility Code Example',
-                        width: '100%',  // Max width to make it responsive
-                        height: 'auto',  // Keep aspect ratio
+                        url: '/img/examples/accessibility.png',  // Ruta a la imagen del ejemplo
+                        alt: 'Ejemplo de Código de Accesibilidad',
+                        width: '100%',  // Ancho máximo para que sea responsiva
+                        height: 'auto',  // Mantener la relación de aspecto
                         responsive: true
                     })}
                 </section>
@@ -50,27 +50,27 @@ export function AccessibilityPage() {
 
     const handleActivateAccessibility = (isEnabled) => {
         if (isEnabled) {
-            console.log("Accessible mode activated");
+            console.log("Modo accesible activado");
         } else {
-            console.log("Accessible mode deactivated");
+            console.log("Modo accesible desactivado");
         }
     };
 
     const postRender = () => {
         setupAccessibilityEvents(handleActivateAccessibility);
-        basicLayoutPostRender();  // Call the basic postRender if necessary
+        basicLayoutPostRender();  // Llamar al postRender básico si es necesario
     };
 
     return {
         layout: BasicLayout(content, { 
             title: 'FlexJS', 
-            footerText: '© 2024 FlexJS - Developed by <a href="https://americapixelgames.com" target="_blank">AmericaPixelGames.com</a>',
+            footerText: '© 2024 FlexJS - Desarrollado por <a href="https://americapixelgames.com" target="_blank">AmericaPixelGames.com</a>',
             head: Head({
                 cssFiles: [
-                    //'/css/styles.css', // Example stylesheet
+                    //'/css/styles.css', // Ejemplo de hoja de estilos
                 ],
                 jsFiles: [
-                    //'/js/utils.js', // Example JS file
+                    //'/js/utils.js', // Ejemplo de archivo JS
                 ]
             })
         }),

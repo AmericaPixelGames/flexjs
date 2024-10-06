@@ -1,19 +1,19 @@
 import { loadTranslations, getUserLanguage } from '../../translations/index.js';
 
 export function Video({ mode = 'play', videoUrl = '', onBase64Ready = null }) {
-    // Get the user's language and load translations
+    // Obtener el idioma del usuario y cargar las traducciones
     const userLanguage = getUserLanguage();
     const translations = loadTranslations(userLanguage);
 
     if (mode === 'play') {
-        // Video playback
+        //Reproducción de Video
         return `
             <div>
                 <video id="video" controls width="320" height="240" src="${videoUrl}"></video>
             </div>
         `;
     }
-    // Video recording
+    //Grabación de Video
     return `
         <div>
             <div class="form-group">
@@ -36,8 +36,7 @@ export function Video({ mode = 'play', videoUrl = '', onBase64Ready = null }) {
         </div>
     `;
 }
-
-// Function to handle the countdown before starting recording
+// Función para manejar el conteo antes de iniciar la grabación
 async function startCountdown() {
     return new Promise((resolve) => {
         let countdown = 3;
@@ -51,63 +50,61 @@ async function startCountdown() {
             if (countdown === 0) {
                 clearInterval(interval);
                 countdownElement.style.display = 'none';
-                resolve();  // Countdown finished
+                resolve();  // Conteo terminado
             }
         }, 1000);
     });
 }
-
-let mediaRecorder = null;
-let stream = null;
-
+let mediaRecorder= null;
+let  stream = null;
 async function handleVideoRecording(selectedCamera, selectedMic, onBase64Ready) {
     try {
-        // Configure the selected camera and microphone constraints
+        // Configurar las restricciones de la cámara y el micrófono seleccionados
         const constraints = {
             video: { deviceId: selectedCamera ? { exact: selectedCamera } : true },
             audio: { deviceId: selectedMic ? { exact: selectedMic } : true }
         };
 
-        // Get the video and audio stream
-        stream = await navigator.mediaDevices.getUserMedia(constraints);
+        // Obtener el stream de video y audio
+         stream = await navigator.mediaDevices.getUserMedia(constraints);
 
-        // Assign the stream to the video preview to show what is being recorded
+        // Asignar el stream al video preview para mostrar lo que se está grabando
         const videoElement = document.getElementById('video-preview');
         videoElement.srcObject = stream;
 
-        // Wait for the 3-second countdown before starting the recording
-        await startCountdown();  // Call a function to handle the countdown
-        videoElement.play();  // Start video playback in the preview
+        // Esperar el conteo de 3 segundos antes de iniciar la grabación
+        await startCountdown();  // Llama a una función que maneja la cuenta regresiva
+        videoElement.play();  // Inicia la reproducción del video en la vista previa
 
-        // Start the MediaRecorder with the captured stream after the countdown
+        // Iniciar el MediaRecorder con el stream capturado después del conteo
         mediaRecorder = new MediaRecorder(stream);
         const recordedChunks = [];
 
-        // Handle available data from the recording
+        // Manejar los datos disponibles de la grabación
         mediaRecorder.ondataavailable = function (event) {
             if (event.data.size > 0) {
                 recordedChunks.push(event.data);
             }
         };
 
-        // When the recording stops, create a video file
+        // Cuando se detiene la grabación, crear un archivo de video
         mediaRecorder.onstop = function () {
             const blob = new Blob(recordedChunks, { type: 'video/mp4' });
             const videoURL = URL.createObjectURL(blob);
 
-            // Display the recorded video in the preview
-            videoElement.srcObject = null;  // Disconnect the camera stream
-            videoElement.src = videoURL;    // Show the recorded video
+            // Mostrar el video grabado en la vista previa
+            videoElement.srcObject = null;  // Desconectar el stream de la cámara
+            videoElement.src = videoURL;    // Mostrar el video grabado
             videoElement.controls = true;
             videoElement.play();
 
-            // Enable the download button
+            // Habilitar el botón de descarga
             const downloadBtn = document.getElementById('download-btn');
             downloadBtn.href = videoURL;
-            downloadBtn.download = 'recording.mp4';
+            downloadBtn.download = 'grabacion.mp4';
             downloadBtn.style.display = 'inline-block';
 
-            // Convert the recorded file to Base64 and call the callback
+            // Convertir el archivo grabado a Base64 y llamar al callback
             const reader = new FileReader();
             reader.onloadend = function () {
                 const base64 = reader.result;
@@ -118,38 +115,36 @@ async function handleVideoRecording(selectedCamera, selectedMic, onBase64Ready) 
             reader.readAsDataURL(blob);
         };
 
-        // Start recording after the countdown and show the pause and stop buttons
+        // Comenzar la grabación después del conteo y mostrar los botones de pausa y detener
         mediaRecorder.start();
         document.getElementById('pause-btn').style.display = 'inline-block';
         document.getElementById('stop-btn').style.display = 'inline-block';
 
     } catch (error) {
-        console.error('Error recording video:', error);
+        console.error('Error grabando video:', error);
     }
 }
-
-// Pause or resume recording
+// Pausar o reanudar la grabación
 function togglePauseRecording() {
     const pauseBtn = document.getElementById('pause-btn');
     const videoElement = document.getElementById('video-preview');
 
     if (mediaRecorder && mediaRecorder.state === 'recording') {
         mediaRecorder.pause();
-        pauseBtn.innerText = 'Resume';
+        pauseBtn.innerText = 'Reanudar';
         videoElement.pause();
     } else if (mediaRecorder && mediaRecorder.state === 'paused') {
         mediaRecorder.resume();
-        pauseBtn.innerText = 'Pause';
+        pauseBtn.innerText = 'Pausar';
         videoElement.play();
     }
 }
-
-// Stop recording
+// Detener la grabación
 function stopRecording() {
     if (mediaRecorder) {
         mediaRecorder.stop();
 
-        // Stop the camera stream
+        // Detener el stream de la cámara
         stream.getTracks().forEach(track => track.stop());
 
         document.getElementById('pause-btn').style.display = 'none';
@@ -157,47 +152,45 @@ function stopRecording() {
         document.getElementById('download-btn').style.display = 'inline-block';
     }
 }
-
-// Load media devices (cameras and microphones)
+// Cargar los dispositivos multimedia (cámaras y micrófonos)
 export async function loadMediaDevices() {
     const devices = await navigator.mediaDevices.enumerateDevices();
     const videoInputDevices = devices.filter(device => device.kind === 'videoinput');
     const audioInputDevices = devices.filter(device => device.kind === 'audioinput');
 
-    // Populate the camera and microphone lists
+    // Popular las listas de cámaras y micrófonos
     const cameraSelect = document.getElementById('camera-select');
     const micSelect = document.getElementById('mic-select');
     
     videoInputDevices.forEach(device => {
         const option = document.createElement('option');
         option.value = device.deviceId;
-        option.text = device.label || `Camera ${cameraSelect.length + 1}`;
+        option.text = device.label || `Cámara ${cameraSelect.length + 1}`;
         cameraSelect.appendChild(option);
     });
 
     audioInputDevices.forEach(device => {
         const option = document.createElement('option');
         option.value = device.deviceId;
-        option.text = device.label || `Microphone ${micSelect.length + 1}`;
+        option.text = device.label || `Micrófono ${micSelect.length + 1}`;
         micSelect.appendChild(option);
     });
 }
-
-// Event logic after rendering the Video component
+// Lógica de eventos después de renderizar el componente Video
 export function setupVideoEvents(onBase64Ready) {
-    // Load media devices
+    // Cargar los dispositivos multimedia
     loadMediaDevices();
 
-    // Start video recording
+    // Iniciar grabación de video
     document.getElementById('start-video-btn').addEventListener('click', () => {
         const selectedCamera = document.getElementById('camera-select').value;
         const selectedMic = document.getElementById('mic-select').value;
         handleVideoRecording(selectedCamera, selectedMic, onBase64Ready);
     });
 
-    // Pause/resume recording
+    // Pausar/reanudar grabación
     document.getElementById('pause-btn').addEventListener('click', togglePauseRecording);
 
-    // Stop recording
+    // Detener grabación
     document.getElementById('stop-btn').addEventListener('click', stopRecording);
 }

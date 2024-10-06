@@ -1,26 +1,26 @@
-// BasicLayout
-import { Navbar, setupNavbarEvents } from '../components/core/navbar.js';
+//BasicLayout
+import { Navbar,setupNavbarEvents } from '../components/core/navbar.js';
 import { Footer } from '../components/core/footer.js';
-import { loadTranslations, getUserLanguage } from '../translations/index.js';  // Load translations
+import { loadTranslations, getUserLanguage } from '../translations/index.js';  // Cargar traducciones
 
 export function BasicLayout(content, options = {}) {
-    const userLanguage = getUserLanguage();  // Get the user's language
-    const translations = loadTranslations(userLanguage);  // Load translations
+    const userLanguage = getUserLanguage();  // Obtener el idioma del usuario
+    const translations = loadTranslations(userLanguage);  // Cargar traducciones
 
     const { 
-        title = translations.basicLayout_title || 'My Application', 
-        footerText = translations.basicLayout_footer || '© 2025 My Application',
+        title = translations.basicLayout_title || 'Mi Aplicación', 
+        footerText = translations.basicLayout_footer || '© 2025 Mi Aplicación',
         logoUrl = 'img/logo1.png'
     } = options;
 
-    // Use translations for the navigation links
+    // Usar traducciones para los enlaces de navegación
     const links = [
-        { name: translations.navbar_home || 'Home', url: '/' },
-        { name: translations.navbar_about || 'About', url: '/about' },
-        { name: translations.navbar_details || 'Details', url: '/details/1' }
+        { name: translations.navbar_home || 'Inicio', url: '/' },
+        { name: translations.navbar_about || 'Acerca de', url: '/about' },
+        { name: translations.navbar_details || 'Detalles', url: '/details/1' }
     ];
 
-    // Add the LanguageSwitcher within the layout
+    // Añadir el LanguageSwitcher dentro del layout
     return `
         <!DOCTYPE html>
         <html lang="${userLanguage}">
@@ -36,15 +36,15 @@ export function BasicLayout(content, options = {}) {
                 </header>
 
                 <main class="container-fluid mt-4">
-                    ${content}  <!-- The specific page content is inserted here -->
+                    ${content}  <!-- Aquí se inserta el contenido específico de la página -->
                 </main>
-                ${Footer(footerText, logoUrl)} <!-- We use the Footer here -->
+                ${Footer(footerText, logoUrl)} <!-- Usamos el Footer aquí -->
             </body>
         </html>
     `;
 }
 
-// Make sure to call `setupLanguageSwitcher` on every page after rendering
+// Asegúrate de llamar a `setupLanguageSwitcher` en cada página después del renderizado
 export function postRender() {
-    setupNavbarEvents();  // Set up the switcher events after the DOM is ready
+    setupNavbarEvents();  // Configurar los eventos del switcher después de que el DOM esté listo
 }

@@ -1,37 +1,37 @@
-// context.js - Application context management
+// context.js - Gestión del contexto de la aplicación
 
 import contextStorage from './contextStorage.js';
 
 const context = (() => {
     
-    // The initial context loaded when the app starts
+    // El contexto inicial cargado cuando la app se inicia
     const initialContext = {
-        appName: "My Framework",
+        appName: "Mi Framework",
         version: "1.0",
         user: {
-            name: "User",
+            name: "Usuario",
         },
         selectedTheme: "blue",
         highContrast: 'false',
-        fontSize: "1",
+        fontSize:"1",
         colorBlindMode: "none"
     };
 
-    // The progressive context where the user adds or modifies data
+    // El contexto progresivo donde el usuario agrega o modifica datos
     let progressiveContext = {};
 
-    // Load the initial context into memory and localStorage when the app starts
+    // Cargar el contexto inicial en memoria y en localStorage al iniciar la app
     function loadInitialContext() {
-        contextStorage.setItem('appContext', initialContext);  // Save the initial context to localStorage
-        progressiveContext = { ...initialContext };  // Load the initial context into memory
+        contextStorage.setItem('appContext', initialContext);  // Guarda el contexto inicial en localStorage
+        progressiveContext = { ...initialContext };  // Carga el contexto inicial en memoria
     }
 
-    // Get the complete context (progressive or initial) in real-time
+    // Obtener el contexto completo (progresivo o inicial) en tiempo real
     function getContext() {
         return progressiveContext;
     }
 
-    // Get a specific value from the context by its key for either initialContext or progressiveContext
+    // Obtener un valor específico del contexto por su clave (key) para initialContext o progressiveContext
     function getContextValue(key, contextType = 'progressive') {
         if (contextType === 'initial') {
             return getNestedValue(initialContext, key);
@@ -40,45 +40,43 @@ const context = (() => {
         }
     }
 
-    // Update a specific value in the progressive context and store it in localStorage
+    // Actualizar un valor específico en el contexto progresivo y almacenarlo en localStorage
     function updateContext(key, value) {
         setNestedValue(progressiveContext, key, value);
-        contextStorage.setItem('appContext', progressiveContext);  // Save the updated context to localStorage
+        contextStorage.setItem('appContext', progressiveContext);  // Guarda el contexto actualizado en localStorage
     }
-
-    // Function to add new data to the progressive context
+    // Función para agregar nuevos datos al contexto progresivo
     function addToContext(key, value) {
         if (!getNestedValue(progressiveContext, key)) {
-            // Only add if the key doesn't exist in the progressive context
+            // Solo agregar si la clave no existe en el contexto progresivo
             setNestedValue(progressiveContext, key, value);
-            contextStorage.setItem('appContext', progressiveContext);  // Update the localStorage
+            contextStorage.setItem('appContext', progressiveContext);  // Actualizar el almacenamiento en localStorage
         } else {
-            console.warn(`The key ${key} already exists in the progressive context.`);
+            console.warn(`La clave ${key} ya existe en el contexto progresivo.`);
         }
     }
-
-    // Remove a specific key from the progressive context
+    // Eliminar una clave específica del contexto progresivo
     function removeFromContext(key) {
         deleteNestedValue(progressiveContext, key);
-        contextStorage.setItem('appContext', progressiveContext);  // Update localStorage
+        contextStorage.setItem('appContext', progressiveContext);  // Actualiza el localStorage
     }
 
-    // Load the progressive context from localStorage (if it exists)
+    // Cargar el contexto progresivo desde localStorage (si existe)
     function loadProgressiveContext() {
         const storedContext = contextStorage.getItem('appContext');
         if (storedContext) {
-            progressiveContext = { ...storedContext };  // Load the saved context into memory
+            progressiveContext = { ...storedContext };  // Cargar el contexto guardado en memoria
         } else {
-            loadInitialContext();  // If no saved context, load the initial context
+            loadInitialContext();  // Si no hay contexto guardado, carga el inicial
         }
     }
 
-    // Utility function to get a nested value by key
+    // Función utilitaria para obtener un valor anidado por clave
     function getNestedValue(obj, key) {
         return key.split('.').reduce((o, i) => (o ? o[i] : undefined), obj);
     }
 
-    // Utility function to update a nested value by key
+    // Función utilitaria para actualizar un valor anidado por clave
     function setNestedValue(obj, key, value) {
         const keys = key.split('.');
         keys.reduce((o, i, idx) => {
@@ -91,7 +89,7 @@ const context = (() => {
         }, obj);
     }
 
-    // Utility function to delete a nested value by key
+    // Función utilitaria para eliminar un valor anidado por clave
     function deleteNestedValue(obj, key) {
         const keys = key.split('.');
         keys.reduce((o, i, idx) => {
@@ -102,7 +100,7 @@ const context = (() => {
         }, obj);
     }
 
-    // Export the context functions
+    // Exportar las funciones del contexto
     return {
         loadInitialContext,
         getContext,
@@ -114,5 +112,4 @@ const context = (() => {
     };
 
 })();
-
 export default context;

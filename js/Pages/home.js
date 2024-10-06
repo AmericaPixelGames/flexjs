@@ -1,34 +1,34 @@
-import { BasicLayout, postRender as basicLayoutPostRender } from '../layouts/BasicLayout.js';
+import { BasicLayout, postRender as basicLayoutPostRender } from '../layouts/BasicLayout.js'; 
 import { Card } from '../components/core/card.js';
 import { Modal, showModal, handleModalEvents } from '../components/core/modal.js';
 import { Head } from '../components/core/head.js';
 import { Image } from '../components/core/image.js';
 import context from '../core/context.js';
-import { loadTranslations, getUserLanguage } from '../translations/index.js';  // Load translations
+import { loadTranslations, getUserLanguage } from '../translations/index.js';  // Cargar las traducciones
 
-// Home Page
+// Página Home (Inicio)
 export function HomePage() {
     const modalId = 'exampleModal';
 
-    // Get the user's language and load translations
+    // Obtener el idioma del usuario y cargar las traducciones
     const userLanguage = getUserLanguage();
     const translations = loadTranslations(userLanguage);
 
-    // Load the progressive context when the app starts
+    // Cargar el contexto progresivo al iniciar la aplicación
     context.loadProgressiveContext();
 
-    // Get the complete context and some specific values
+    // Obtener el contexto completo y algunos valores específicos
     const appContext = context.getContext();
     const theme = context.getContextValue('user.preferences.theme', 'progressive') || 'light';
 
-    // Define the content of the page using translations
+    // Definir el contenido de la página con las traducciones
     const content = `
-        <!-- Main section with header and logo -->
+        <!-- Sección principal con encabezado y logo -->
         <section class="hero-section text-center mt-5" aria-labelledby="main-heading">
-            <!-- Here we add the FlexJS logo -->
+            <!-- Aquí agregamos el logo de FlexJS -->
             <div class="d-flex justify-content-center mb-4">
                 ${Image({
-                    url: '/img/logo2.png',  // Path to the logo image
+                    url: '/img/logo2.png',  // Ruta de la imagen del logo
                     width: '200px',
                     height: 'auto',
                     responsive: true,
@@ -40,13 +40,13 @@ export function HomePage() {
             <button id='openModal' class="btn btn-primary mt-3" aria-controls="exampleModal">${translations.home_moreInfo}</button>
         </section>
 
-        <!-- FlexJS Description -->
+        <!-- Descripción de FlexJS -->
         <section class="container mt-5" aria-labelledby="what-is-flexjs">
             <h2 id="what-is-flexjs" class="text-center mb-4">${translations.home_whatIsFlexJS}</h2>
             <p class="text-justify">${translations.home_flexjsDescription}</p>
         </section>
 
-        <!-- Key Features of FlexJS -->
+        <!-- Características clave de FlexJS -->
         <section class="container mt-5" aria-labelledby="key-features">
             <h2 id="key-features" class="text-center mb-4">${translations.home_keyFeatures}</h2>
             <div class="row">
@@ -70,35 +70,36 @@ export function HomePage() {
             </div>
         </section>
 
-        <!-- Final Invitation -->
+        <!-- Invitación final -->
         <section class="container mt-5" aria-labelledby="join-us">
             <h2 id="join-us" class="text-center">${translations.home_joinUs}</h2>
             <p class="lead text-center">${translations.home_intro}</p>
         </section>
 
-        <!-- Additional Information Modal -->
+        <!-- Modal de información adicional -->
         ${Modal({
             id: modalId,
             title: translations.home_modalTitle,
             content: `<p>${translations.home_modalContent}</p>`,
-            onClose: () => console.log('Modal closed'),
-            onSave: () => console.log('Data saved')
+            onClose: () => console.log('Modal cerrado'),
+            onSave: () => console.log('Datos guardados')
         })}
     `;
 
-    // Post-render logic to add interactivity
+    // Lógica post-render para añadir interactividad
     const postRender = () => {
         document.getElementById('openModal')?.addEventListener('click', () => {
-            showModal(modalId);  // Show the modal with more information
+            showModal(modalId);  // Mostrar el modal con más información
         });
         basicLayoutPostRender(); 
+    
     };
 
     return { 
         layout: BasicLayout(content, 
             { 
                 title: 'FlexJS', 
-                footerText: '© 2024 FlexJS - Developed by <a href="https://americapixelgames.com" target="_blank">AmericaPixelGames.com</a>',
+                footerText: '© 2024 FlexJS - Desarrollado por <a href="https://americapixelgames.com" target="_blank">AmericaPixelGames.com</a>',
                 head: Head({
                     cssFiles: [
                         // '/css/styles.css',

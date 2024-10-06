@@ -3,22 +3,22 @@ import { Card } from '../components/core/card.js';
 import { navigateTo } from '../core/router.js';
 import { Head } from '../components/core/head.js';
 import { Image } from '../components/core/image.js';
-import { loadTranslations, getUserLanguage } from '../translations/index.js';  // Import translation system
+import { loadTranslations, getUserLanguage } from '../translations/index.js';  // Importar sistema de traducciones
 
-// About Page
+// Página About (Acerca de)
 export function AboutPage() {
-    // Get the user's language and load translations
+    // Obtener el idioma del usuario y cargar las traducciones
     const userLanguage = getUserLanguage();
     const translations = loadTranslations(userLanguage);
 
     const content = `
-        <!-- Main Header -->
+        <!-- Encabezado Principal -->
         <section class="container mt-5" aria-labelledby="about-heading">
             <h1 id="about-heading" class="text-center">${translations.about_heading}</h1>
             <p class="lead text-center">${translations.about_intro}</p>
         </section>
 
-        <!-- Framework Features -->
+        <!-- Características del Framework -->
         <section class="container mt-5" aria-labelledby="framework-features">
             <h2 id="framework-features" class="text-center">${translations.about_features_heading}</h2>
             <div class="row">
@@ -101,7 +101,7 @@ export function AboutPage() {
             </div>
         </section>
 
-        <!-- Framework Details -->
+        <!-- Detalles del Framework -->
         <section class="container mt-5" aria-labelledby="framework-details">
             <h2 id="framework-details">${translations.about_details_heading}</h2>
             <p>${translations.about_details_intro}</p>
@@ -115,12 +115,12 @@ export function AboutPage() {
             <p>${translations.about_details_modularity}</p>
         </section>
 
-        <!-- Information about Marvin Calvo -->
+        <!-- Información sobre Marvin Calvo -->
         <section class="container mt-5" aria-labelledby="about-marvin">
             <h2 id="about-marvin">${translations.about_marvin_heading}</h2>
             <div class="row">
                 <div class="col-md-4 text-center">
-                    <!-- Using the Image component -->
+                    <!-- Utilización del componente de imagen -->
                     ${Image({
                         url: 'img/yo.jpg',
                         alt: 'Marvin Calvo',
@@ -143,14 +143,14 @@ export function AboutPage() {
             </div>
         </section>
 
-        <!-- Link to FlexJS Repository -->
+        <!-- Enlace al Repositorio de FlexJS -->
         <section class="container mt-5" aria-labelledby="about-repository">
             <h2 id="about-repository">${translations.about_repository_heading}</h2>
             <p>${translations.about_repository_intro}</p>
-            <a href="https://github.com/AmericaPixelGames/flexjs" target="_blank" class="btn btn-primary">Visit GitHub Repository</a>
+            <a href="https://github.com/AmericaPixelGames/flexjs" target="_blank" class="btn btn-primary">Visitar Repositorio en GitHub</a>
         </section>
 
-        <!-- Information about America Pixel Games -->
+        <!-- Información sobre America Pixel Games -->
         <section class="container mt-5" aria-labelledby="about-americapixelgames">
             <h2 id="about-americapixelgames">${translations.about_americapixelgames_heading}</h2>
             <p>${translations.about_americapixelgames_description}</p>
@@ -164,7 +164,7 @@ export function AboutPage() {
     return { 
         layout: BasicLayout(content, {
             title: 'FlexJS', 
-            footerText: '© 2024 FlexJS - Developed by <a href="https://americapixelgames.com" target="_blank">AmericaPixelGames.com</a>',
+            footerText: '© 2024 FlexJS - Desarrollado por <a href="https://americapixelgames.com" target="_blank">AmericaPixelGames.com</a>',
             head: Head({
                 cssFiles: [
                     // '/css/styles.css',

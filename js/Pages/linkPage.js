@@ -1,10 +1,10 @@
 import { BasicLayout, postRender as basicLayoutPostRender } from '../layouts/BasicLayout.js'; 
 import { HyperLinker } from '../components/core/hyperLinker.js';
 import { Head } from '../components/core/head.js';
-import { loadTranslations, getUserLanguage } from '../translations/index.js';  // Import translations
+import { loadTranslations, getUserLanguage } from '../translations/index.js';  // Importar traducciones
 
 export function LinkPage() {
-    // Get the user's language and load translations
+    // Obtener el idioma del usuario y cargar las traducciones
     const userLanguage = getUserLanguage();
     const translations = loadTranslations(userLanguage);
 
@@ -20,20 +20,20 @@ export function LinkPage() {
     `;
 
     const postRender = () => {
-        console.log('Link page loaded');
+        console.log('Página de Link cargada');
         basicLayoutPostRender();
     };
 
     return {
         layout: BasicLayout(content, {
              title: 'FlexJS', 
-             footerText: '© 2024 FlexJS - Developed by <a href="https://americapixelgames.com" target="_blank">AmericaPixelGames.com</a>',
+             footerText: '© 2024 FlexJS - Desarrollado por <a href="https://americapixelgames.com" target="_blank">AmericaPixelGames.com</a>',
              head: Head({
                 cssFiles: [
-                    //'/css/styles.css', // Example CSS file
+                    //'/css/styles.css', // Ejemplo de hoja de estilos
                 ],
                 jsFiles: [
-                    //'/js/utils.js', // Example JS file
+                    //'/js/utils.js', // Ejemplo de archivo JS
                 ]
             })
         }),

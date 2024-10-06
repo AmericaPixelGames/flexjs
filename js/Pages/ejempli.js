@@ -3,31 +3,34 @@ import { ThemeSelector, setupThemeSelector } from '../components/core/themeSelec
 import { Head } from '../components/core/head.js';
 export function SimpleThemeSelectorPage() {
 
-    // Main content of the page, including the theme selector
+    // Contenido principal de la página, incluyendo el selector de temas
     const content = `
         <section class="container mt-5">
-            ${ThemeSelector()} <!-- Theme selector component -->
+            ${ThemeSelector()} <!-- Componente para seleccionar el tema -->
         </section>
     `;
 
     const postRender = () => {
-        setupThemeSelector(); // Initialize the theme selector
-        basicLayoutPostRender(); // Call the basic layout postRender if needed
+        setupThemeSelector(); // Inicializar el selector de temas
+        basicLayoutPostRender(); // Llamar al postRender del layout básico si es necesario
     };
 
     return {
         layout: BasicLayout(content, { 
-            title: 'FlexJS - Simple Theme Selector', 
-            footerText: '© 2024 FlexJS - Developed by <a href="https://americapixelgames.com" target="_blank">AmericaPixelGames.com</a>',
+            title: 'FlexJS - Selector de Tema Simple', 
+            footerText: '© 2024 FlexJS - Desarrollado por <a href="https://americapixelgames.com" target="_blank">AmericaPixelGames.com</a>',
             head: Head({
                 cssFiles: [
-                    //'/css/styles.css', // Required CSS files
+                    //'/css/styles.css', // Archivos CSS necesarios
                 ],
                 jsFiles: [
-                    //'/js/utils.js', // Required JS files
+                    //'/js/utils.js', // Archivos JS necesarios
                 ]
             })
         }),
         postRender
     };
 }
+
+
+

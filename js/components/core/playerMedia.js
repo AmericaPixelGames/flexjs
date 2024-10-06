@@ -1,6 +1,6 @@
-// File: js/components/playerMedia.js
+// Archivo: js/components/playerMedia.js
 
-// Function to start video recording with selected devices
+// Función para iniciar la grabación de video con dispositivos seleccionados
 export async function videoMedia(constraints) {
     const stream = await navigator.mediaDevices.getUserMedia(constraints);
     const mediaRecorder = new MediaRecorder(stream);
@@ -15,7 +15,7 @@ export async function videoMedia(constraints) {
             const blob = new Blob(chunks, { type: 'video/mp4' });
             const videoURL = URL.createObjectURL(blob);
             
-            // Convert to Base64
+            // Convertir a Base64
             const reader = new FileReader();
             reader.onloadend = function () {
                 resolve({ base64: reader.result, blob, videoURL });
@@ -28,9 +28,9 @@ export async function videoMedia(constraints) {
     });
 }
 
-// File: js/components/playerMedia.js
+// Archivo: js/components/playerMedia.js
 
-// Function to record audio and convert it to base64
+// Función para grabar audio y convertirlo en base64
 export async function audioMedia(constraints) {
     try {
         const stream = await navigator.mediaDevices.getUserMedia(constraints);
@@ -47,7 +47,7 @@ export async function audioMedia(constraints) {
             mediaRecorder.onstop = function () {
                 const blob = new Blob(chunks, { type: 'audio/webm' });
 
-                // Convert the blob to base64
+                // Convertir el blob a base64
                 const reader = new FileReader();
                 reader.onloadend = function () {
                     const base64Audio = reader.result;
@@ -64,7 +64,9 @@ export async function audioMedia(constraints) {
             mediaRecorder.start();
         });
     } catch (error) {
-        console.error('Error accessing microphone:', error);
+        console.error('Error accediendo al micrófono:', error);
         throw error;
     }
 }
+
+

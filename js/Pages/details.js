@@ -1,30 +1,29 @@
 import { BasicLayout, postRender as basicLayoutPostRender } from '../layouts/BasicLayout.js'; 
 import { Modal, showModal, handleModalEvents } from '../components/core/modal.js';
 import { Head } from '../components/core/head.js';
-import { loadTranslations, getUserLanguage } from '../translations/index.js';  // Import translations
+import { loadTranslations, getUserLanguage } from '../translations/index.js';  // Importar traducciones
 
 export function DetailsPage(params) {
     const modalId = 'exampleModal';
-    const { id } = params;
-
-    // Get the user's language and load translations
+const {id} = params
+    // Obtener el idioma del usuario y cargar las traducciones
     const userLanguage = getUserLanguage();
     const translations = loadTranslations(userLanguage);
 
-    // Define the page content using translations
+    // Definir el contenido de la página utilizando las traducciones
     const content = `
         <section class="container mt-5" aria-labelledby="main-heading">
-            <h1 id="main-heading" class="text-center">${translations.details_heading}</h1>
+            <h1 id="main-heading" class="text-center">${translations.details_heading }</h1>
             <p class="lead text-center">${translations.details_intro}</p>
 
-            <!-- Framework Description -->
+            <!-- Descripción del Framework -->
             <section class="mt-5" aria-labelledby="description-heading">
                 <h2 id="description-heading">${translations.details_whatIsHeading}</h2>
                 <p><strong>FlexJS</strong> ${translations.details_whatIsDescription1}</p>
                 <p>${translations.details_whatIsDescription2}</p>
             </section>
 
-            <!-- Framework Structure -->
+            <!-- Estructura del Framework -->
             <section class="mt-5" aria-labelledby="architecture-heading">
                 <h2 id="architecture-heading">${translations.details_architectureHeading}</h2>
                 <p>${translations.details_architectureDescription}</p>
@@ -38,7 +37,7 @@ export function DetailsPage(params) {
                 </ul>
             </section>
 
-            <!-- Routing and Rendering Functionality -->
+            <!-- Funcionamiento del Enrutamiento y Renderizado -->
             <section class="mt-5" aria-labelledby="routing-heading">
                 <h2 id="routing-heading">${translations.details_routingHeading}</h2>
                 <p>${translations.details_routingDescription1}</p>
@@ -46,7 +45,7 @@ export function DetailsPage(params) {
                 <p>${translations.details_routingDescription3}</p>
             </section>
 
-            <!-- Progressive Context and Persistence -->
+            <!-- Contexto Progresivo y Persistencia -->
             <section class="mt-5" aria-labelledby="context-heading">
                 <h2 id="context-heading">${translations.details_contextHeading}</h2>
                 <p>${translations.details_contextDescription1}</p>
@@ -58,7 +57,7 @@ export function DetailsPage(params) {
                 <p>${translations.details_contextStorageDescription}</p>
             </section>
 
-            <!-- Accessibility and Translation Features -->
+            <!-- Funcionalidades de Accesibilidad y Traducción -->
             <section class="mt-5" aria-labelledby="accessibility-heading">
                 <h2 id="accessibility-heading">${translations.details_accessibilityTranslationHeading}</h2>
                 <p>${translations.details_accessibilityTranslationDescription}</p>
@@ -68,14 +67,14 @@ export function DetailsPage(params) {
                 </ul>
             </section>
 
-            <!-- Flexibility and Customization -->
+            <!-- Flexibilidad y Personalización -->
             <section class="mt-5" aria-labelledby="customization-heading">
                 <h2 id="customization-heading">${translations.details_customizationHeading}</h2>
                 <p>${translations.details_customizationDescription1}</p>
                 <p>${translations.details_customizationDescription2}</p>
             </section>
 
-            <!-- Conclusion -->
+            <!-- Conclusión -->
             <section class="mt-5" aria-labelledby="conclusion-heading">
                 <h2 id="conclusion-heading">${translations.details_conclusionHeading}</h2>
                 <p>${translations.details_conclusionDescription}</p>
@@ -88,20 +87,20 @@ export function DetailsPage(params) {
             showModal(modalId);
         });
 
-        handleModalEvents(modalId, () => console.log('Modal closed'), () => console.log('Data saved'));
+        handleModalEvents(modalId, () => console.log('Modal cerrado'), () => console.log('Datos guardados'));
         basicLayoutPostRender();
     };
 
     return {
         layout: BasicLayout(content, { 
             title: 'FlexJS', 
-            footerText: '© 2024 FlexJS - Developed by <a href="https://americapixelgames.com" target="_blank">AmericaPixelGames.com</a>',
+            footerText: '© 2024 FlexJS - Desarrollado por <a href="https://americapixelgames.com" target="_blank">AmericaPixelGames.com</a>',
             head: Head({
                 cssFiles: [
-                    // '/css/styles.css', // Example stylesheet
+                    // '/css/styles.css', // Ejemplo de hoja de estilos
                 ],
                 jsFiles: [
-                    // '/js/utils.js', // Example JS file
+                    // '/js/utils.js', // Ejemplo de archivo JS
                 ]
             })
         }),

@@ -1,29 +1,29 @@
-// File: js/components/tab.js 
+// Archivo: js/components/tab.js 
 
 export function Tabs({ id, tabs = [], orientation = 'horizontal', position = 'left' }) {
-    if (!tabs.length) return '';  // If there are no tabs, return an empty string
+    if (!tabs.length) return '';  // Si no hay pestañas, devolver una cadena vacía
 
-    // Define Bootstrap classes based on the orientation
+    // Definir clases de Bootstrap según la orientación
     const navClass = orientation === 'vertical' ? 'nav-pills flex-column' : 'nav-tabs';
-    const contentClass = orientation === 'vertical' ? 'col-9' : ''; // If vertical, the content will have column width
+    const contentClass = orientation === 'vertical' ? 'col-9' : ''; // Si es vertical, el contenido tendrá ancho de columna
 
-    // Create the tab headers with a unique ID for each set
+    // Crear los encabezados de las pestañas con un ID único para cada conjunto
     const tabHeaders = tabs.map((tab, index) => `
         <li class="nav-item">
-            <a class="nav-link ${index === 0 ? 'active' : ''}" id="${id}-tab-${index}" data-toggle="tab-${id}" href="#${id}-content-${index}" role="tab" aria-controls="${id}-content-${index}" aria-selected="${index === 0}">
+            <a  class="nav-link ${index === 0 ? 'active' : ''}" id="${id}-tab-${index}" data-toggle="tab-${id}" href="#${id}-content-${index}" role="tab" aria-controls="${id}-content-${index}" aria-selected="${index === 0}">
                 ${tab.title}
             </a>
         </li>
     `).join('');
 
-    // Create the tab content with a unique ID for each set
+    // Crear el contenido de las pestañas con un ID único para cada conjunto
     const tabContents = tabs.map((tab, index) => `
         <div class="tab-pane fade ${index === 0 ? 'show active' : ''}" id="${id}-content-${index}" role="tabpanel" aria-labelledby="${id}-tab-${index}">
             ${tab.content}
         </div>
     `).join('');
 
-    // If the orientation is vertical, decide if the tabs are on the left or right
+    // Si la orientación es vertical, decidir si las pestañas están a la izquierda o a la derecha
     if (orientation === 'vertical') {
         if (position === 'left') {
             return `
@@ -58,7 +58,7 @@ export function Tabs({ id, tabs = [], orientation = 'horizontal', position = 'le
         }
     }
 
-    // If horizontal, just return the tab list and its content
+    // Si es horizontal, solo devolver la lista de pestañas y su contenido
     return `
         <ul class="nav ${navClass}" id="${id}-tablist" role="tablist">
             ${tabHeaders}
@@ -69,14 +69,14 @@ export function Tabs({ id, tabs = [], orientation = 'horizontal', position = 'le
     `;
 }
 
-// Function to properly initialize Bootstrap tabs (version 4.5.2)
+// Función para inicializar los tabs de Bootstrap correctamente (versión 4.5.2)
 export function setupTabs(id) {
-    // Use Bootstrap's 'shown.bs.tab' event to ensure tabs are activated correctly
+    // Usar el evento 'shown.bs.tab' de Bootstrap para asegurar que las pestañas se activen correctamente
     $(`#${id}-tablist a[data-toggle="tab-${id}"]`).on('click', function (e) {
      
-        $(this).tab('show');  // Show the selected tab content
+        $(this).tab('show');  // Mostrar el contenido de la pestaña seleccionada
         $(`#${id}-tablist a[data-toggle="tab-${id}"]`).removeClass('active');
-        $('#' + e.target.id).addClass('active'); 
+        $('#'+e.target.id).addClass('active'); 
         e.preventDefault();
     });
 }
