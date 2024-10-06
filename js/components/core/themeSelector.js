@@ -1,9 +1,9 @@
 import context from '../../core/context.js';
-import { loadTranslations, getUserLanguage } from '../../translations/index.js';  // Cargar las traducciones
+import { loadTranslations, getUserLanguage } from '../../translations/index.js';  // Load translations
 
-// Componente para cambiar el tema
+// Component to change the theme
 export function ThemeSelector() {
-    // Obtener el idioma del usuario y cargar las traducciones
+    // Get the user's language and load translations
     const userLanguage = getUserLanguage();
     const translations = loadTranslations(userLanguage);
 
@@ -20,13 +20,13 @@ export function ThemeSelector() {
     `;
 }
 
-// Función para aplicar el tema
+// Function to apply the theme
 function applyTheme(theme) {
     const themeLink = document.getElementById('theme-link');
     themeLink.href = `css/theme/${theme}.css`;
 }
 
-// Función para obtener el tema guardado en el contexto
+// Function to get the saved theme from the context
 function getTheme() {
     context.loadInitialContext();
     context.loadProgressiveContext();
@@ -35,12 +35,12 @@ function getTheme() {
     return selectedTheme;
 }
 
-// Función para configurar los eventos del selector de temas
+// Function to set up theme selector events
 export function setupThemeSelector() {
-    // Leer el tema seleccionado y aplicarlo
+    // Read the selected theme and apply it
     const themeSelector = document.getElementById('theme-selector');
 
-    // Opción para cargar el tema previamente seleccionado (por ejemplo, desde localStorage)
+    // Option to load the previously selected theme (e.g., from localStorage)
     const savedTheme = context.getContext().selectedTheme || 'light';
     themeSelector.value = savedTheme;
     applyTheme(savedTheme);
@@ -50,7 +50,7 @@ export function setupThemeSelector() {
         applyTheme(selectedTheme);
     });
 
-    // Guardar el tema seleccionado en el contexto para futuras sesiones
+    // Save the selected theme in the context for future sessions
     themeSelector.addEventListener('change', function () {
         context.updateContext('selectedTheme', this.value);
     });

@@ -1,13 +1,13 @@
 import { BasicLayout, postRender as basicLayoutPostRender } from '../layouts/BasicLayout.js';
 import { Modal, showModal, handleModalEvents } from '../components/core/modal.js';
-import { Image } from '../components/core/image.js';  // Importar el componente de imagen
+import { Image } from '../components/core/image.js';  // Import the Image component
 import { Head } from '../components/core/head.js';
-import { loadTranslations, getUserLanguage } from '../translations/index.js';  // Importar traducciones
+import { loadTranslations, getUserLanguage } from '../translations/index.js';  // Import translations
 
 export function ModalPage() {
     const modalId = 'modalExample';
 
-    // Obtener el idioma del usuario y cargar las traducciones
+    // Get the user's language and load translations
     const userLanguage = getUserLanguage();
     const translations = loadTranslations(userLanguage);
 
@@ -16,10 +16,10 @@ export function ModalPage() {
             <h2 class="text-center">${translations.modalPage_heading}</h2>
             <p>${translations.modalPage_intro}</p>
             
-            <!-- Botón para abrir el modal -->
+            <!-- Button to open the modal -->
             <button id="open-modal-btn" class="btn btn-primary">${translations.modalPage_openButton}</button>
             
-            <!-- Ejemplo del componente Modal -->
+            <!-- Example of the Modal component -->
             ${Modal({
                 id: modalId,
                 title: translations.modalPage_modalTitle,
@@ -28,18 +28,18 @@ export function ModalPage() {
                 onSave: () => alert(translations.modalPage_modalSaveAlert)
             })}
 
-            <!-- Sección de Ejemplo en Código (Imagen) -->
+            <!-- Example Code Section (Image) -->
             <section class="mt-5">
                 <h3 class="text-center">${translations.modalPage_implementationExample}</h3>
                 ${Image({
-                    url: '/img/examples/modal.png',   // URL de la imagen
-                    width: '100%',                         // Ancho responsive
-                    height: 'auto',                        // Altura automática
-                    responsive: true                       // Imagen responsive
+                    url: '/img/examples/modal.png',   // Image URL
+                    width: '100%',                         // Responsive width
+                    height: 'auto',                        // Auto height
+                    responsive: true                       // Responsive image
                 })}
             </section>
 
-            <!-- Tabla explicativa de las propiedades y funciones del Modal -->
+            <!-- Table explaining Modal properties and functions -->
             <section class="mt-5 table-responsive">
                 <h3 class="text-center">${translations.modalPage_propertiesAndFunctions}</h3>
                 <table class="table table-bordered">
@@ -94,7 +94,7 @@ export function ModalPage() {
 
     const postRender = () => {
         document.getElementById('open-modal-btn').addEventListener('click', () => {
-            showModal(modalId);  // Mostrar el modal
+            showModal(modalId);  // Show the modal
         });
 
         handleModalEvents(modalId, () => console.log(translations.modalPage_modalCloseAlert), () => console.log(translations.modalPage_modalSaveAlert));
@@ -104,13 +104,13 @@ export function ModalPage() {
     return {
         layout: BasicLayout(content, { 
             title: 'FlexJS', 
-            footerText: '© 2024 FlexJS - Desarrollado por <a href="https://americapixelgames.com" target="_blank">AmericaPixelGames.com</a>',
+            footerText: '© 2024 FlexJS - Developed by <a href="https://americapixelgames.com" target="_blank">AmericaPixelGames.com</a>',
             head: Head({
                 cssFiles: [
-                    //'/css/styles.css', // Ejemplo de hoja de estilos
+                    //'/css/styles.css', // Example CSS file
                 ],
                 jsFiles: [
-                    //'/js/utils.js', // Ejemplo de archivo JS
+                    //'/js/utils.js', // Example JS file
                 ]
             })
         }),

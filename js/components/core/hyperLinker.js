@@ -1,9 +1,9 @@
-// Archivo: js/components/link.js
+// File: js/components/link.js
 export function HyperLinker({ href = '#', label = '', icon = '', onclick = null }) {
-    // Si se proporciona un icono, lo añadimos antes del texto
+    // If an icon is provided, add it before the text
     const iconHtml = icon ? `<i class="${icon}"></i> ` : '';
 
-    // Creamos el enlace HTML con el icono (si lo hay) y el texto del label
+    // Create the HTML link with the icon (if present) and the label text
     return `
         <a href="${href}" class="link-component" ${onclick ? `onclick="${onclick}"` : ''}>
             ${iconHtml}${label}

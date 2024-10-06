@@ -1,43 +1,43 @@
-// Archivo: js/components/image.js
+// File: js/components/image.js
 
 export function Image({
     url = '',
-    alt = 'imagen',  // Texto alternativo personalizado
+    alt = 'image',  // Custom alternative text
     width = 'auto',
     height = 'auto',
     responsive = false,
-    adaptation = 'cover',  // Opciones: 'cover', 'contain', 'fill'
-    highResolution = false  // Mejora de resolución para pantallas de alta densidad
+    adaptation = 'cover',  // Options: 'cover', 'contain', 'fill'
+    highResolution = false  // High resolution enhancement for high-density screens
 }) {
-    // Clases básicas para la imagen
+    // Basic classes for the image
     let imgClass = '';
     let style = `width: ${validateUnit(width)}; height: ${validateUnit(height)}; object-fit: ${adaptation};`;
 
-    // Si la imagen debe ser responsive, añadimos la clase correspondiente de Bootstrap
+    // If the image should be responsive, add the corresponding Bootstrap class
     if (responsive) {
-        imgClass += ' img-fluid';  // Clase para imágenes responsive (de Bootstrap)
+        imgClass += ' img-fluid';  // Class for responsive images (from Bootstrap)
     }
 
-    // Lógica para mejorar la resolución de la imagen usando srcset
+    // Logic to enhance image resolution using srcset
     let srcSet = '';
     if (highResolution) {
         const pixelRatio = window.devicePixelRatio || 1;
         const highResWidth = parseFloat(width) * pixelRatio;
         const highResHeight = parseFloat(height) * pixelRatio;
         
-        // Generar srcset para imágenes de alta resolución
+        // Generate srcset for high-resolution images
         srcSet = `srcset="${url} ${pixelRatio}x"`;
 
-        // Aplicar estilo ajustado a la resolución de la pantalla
+        // Apply style adjusted to the screen's resolution
         style += ` width: ${highResWidth}px; height: ${highResHeight}px;`;
     }
 
-    // Función para validar la unidad de medida
+    // Function to validate the unit of measurement
     function validateUnit(value) {
         return isNaN(value) ? value : `${value}px`;
     }
 
-    // Retornar el elemento img con las propiedades y estilos aplicados
+    // Return the img element with the applied properties and styles
     return `
         <img src="${url}" ${srcSet} class="${imgClass}" style="${style}" alt="${alt}" />
     `;

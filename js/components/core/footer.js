@@ -1,7 +1,7 @@
-// Archivo: js/components/footer.js 
+// File: js/components/footer.js
 
-export function Footer(footerText = '© 2024 Mi Aplicación', logoUrl = '') {
-    // Si se proporciona una URL de logo, incluir la imagen en el footer
+export function Footer(footerText = '© 2024 My Application', logoUrl = '') {
+    // If a logo URL is provided, include the image in the footer
     const logoImage = logoUrl ? `<img src="${logoUrl}" alt="Logo" style="height: 40px; margin-right: 10px;">` : '';
 
     return `

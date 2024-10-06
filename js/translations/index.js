@@ -1,24 +1,24 @@
 import { es } from './es.js';
 import { en } from './en.js';
 
-// Contenedor de todas las traducciones
+// Container for all translations
 const translations = {
     es,
     en
 };
 
-// Función para cargar las traducciones según el idioma
+// Function to load translations based on the language
 export function loadTranslations(language) {
-    return translations[language] || translations.en;  // Retorna 'en' por defecto si no existe el idioma
+    return translations[language] || translations.en;  // Returns 'en' by default if the language doesn't exist
 }
 
-// Función para obtener el idioma del usuario
+// Function to get the user's language
 export function getUserLanguage() {
-    return localStorage.getItem('language') || navigator.language.slice(0, 2);  // Idioma almacenado o idioma del navegador
+    return localStorage.getItem('language') || navigator.language.slice(0, 2);  // Stored language or browser language
 }
 
-// Función para cambiar el idioma y recargar la página
+// Function to change the language and reload the page
 export function changeLanguage(lang) {
     localStorage.setItem('language', lang);
-    window.location.reload();  // Recargar la página para aplicar el nuevo idioma
+    window.location.reload();  // Reload the page to apply the new language
 }

@@ -1,8 +1,8 @@
-// Archivo: js/components/myComponent.js
+// File: js/components/myComponent.js
 
-// Función para crear un componente sencillo con un título, contenido y un botón
-export function MyComponent({ title = 'Título de Ejemplo', content = 'Este es el contenido de ejemplo.'}) {
-    // Retornar el HTML del componente con los valores proporcionados
+// Function to create a simple component with a title, content, and a button
+export function MyComponent({ title = 'Example Title', content = 'This is example content.' }) {
+    // Return the component's HTML with the provided values
     return `
         <div class="card mb-4" style="max-width: 400px; margin: 0 auto;">
             <div class="card-body">

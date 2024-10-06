@@ -1,7 +1,7 @@
-// Archivo: js/components/card.js
+// File: js/components/card.js
 
 export function Card({ title, content, buttonText1 = '', buttonId1 = '', buttonEvent1 = null, buttonText2 = '', buttonId2 = '', buttonEvent2 = null, style = "default" }) {
-    // Lógica para asignar eventos a los botones después de que se haya renderizado el DOM
+    // Logic to assign events to buttons after the DOM has been rendered
     setTimeout(() => {
         const button1 = document.getElementById(buttonId1);
         const button2 = document.getElementById(buttonId2);
@@ -14,7 +14,7 @@ export function Card({ title, content, buttonText1 = '', buttonId1 = '', buttonE
         }
     }, 0);
 
-    // Generación dinámica de botones según el estilo
+    // Dynamically generate buttons based on the style
     const renderButtons = () => {
         if (style === 'single-button' && buttonText1) {
             return `<button id="${buttonId1}" class="btn btn-primary">${buttonText1}</button>`;
@@ -25,7 +25,7 @@ export function Card({ title, content, buttonText1 = '', buttonId1 = '', buttonE
                 <button id="${buttonId2}" class="btn btn-secondary">${buttonText2}</button>
             `;
         }
-        return ''; // No botones por defecto
+        return ''; // No buttons by default
     };
 
     return `

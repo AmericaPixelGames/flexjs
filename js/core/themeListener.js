@@ -1,35 +1,36 @@
 import context from '../core/context.js';
-// Función para aplicar el tema seleccionando el archivo CSS correspondiente
+// Function to apply the theme by selecting the corresponding CSS file
 function applyTheme(theme) {
     const themeLink = document.getElementById('theme-link');
     
     if (themeLink) {
-        // Actualizar el archivo CSS del tema
+        // Update the CSS file for the theme
         themeLink.href = `css/theme/${theme}.css`;
     } else {
-        console.error('Elemento <link> con id "theme-link" no encontrado');
+        console.error('Element <link> with id "theme-link" not found');
     }
 }
 
-// Función para aplicar el tema de daltonismo (si está seleccionado)
+// Function to apply color blindness mode (if selected)
 function applyColorBlindMode(colorBlindMode) {
-    const themeLink = document.getElementById('theme-link'); // Usar el mismo <link> para el tema
+    const themeLink = document.getElementById('theme-link'); // Use the same <link> for the theme
 
     if (!themeLink) {
-        console.error('Elemento <link> con id "theme-link" no encontrado');
+        console.error('Element <link> with id "theme-link" not found');
         return;
     }
 
     if (colorBlindMode === 'none') {
-        // Obtener el tema general guardado en localStorage
-        // Si no hay daltonismo, restaurar el tema estándar desde localStorage
+        // Get the saved general theme from localStorage
+        // If no color blindness mode, restore the standard theme from localStorage
         const selectedTheme = getTheme() || 'light';
         applyTheme(selectedTheme);
     } else {
-        // Aplicar el tema de daltonismo
+        // Apply the color blindness theme
         themeLink.href = `css/theme/accessibility/${colorBlindMode}.css`;
     }
 }
+
 function getTheme(){
     //context.loadInitialContext();
     context.loadProgressiveContext();
@@ -37,93 +38,94 @@ function getTheme(){
     const selectedTheme = progressiveContext.selectedTheme;
     return selectedTheme;
 }
-// Función para aplicar el contraste alto (si está activado)
+
+// Function to apply high contrast (if enabled)
 function applyHighContrast(highContrastEnabled) {
     const body = document.body;
     
     if (highContrastEnabled === 'true') {
         body.style.filter = "invert(1) hue-rotate(180deg)";
     } else {
-        body.style.filter = ""; // Desactivar el contraste alto
+        body.style.filter = ""; // Disable high contrast
     }
 }
 
-// Función para aplicar el tamaño de fuente (si está configurado)
+// Function to apply the font size (if configured)
 function applyFontSize(fontSize) {
-    const zoomLevel = fontSize || 1; // Por defecto, zoom 1 (tamaño normal)
+    const zoomLevel = fontSize || 1; // Default zoom is 1 (normal size)
     document.body.style.zoom = zoomLevel;
 }
 
-// Función para inicializar el tema basado en localStorage (incluye daltonismo y otras configuraciones)
+// Function to initialize the theme based on localStorage (includes color blindness and other settings)
 function initializeTheme() {
-    // Obtener el tema general guardado en localStorage
-    const selectedTheme = getTheme()  || 'light'; // Por defecto, tema 'light'
+    // Get the general theme saved in localStorage
+    const selectedTheme = getTheme()  || 'light'; // Default theme is 'light'
     applyTheme(selectedTheme);
 
-    // Obtener el modo de daltonismo guardado en localStorage
-    const colorBlindMode = localStorage.getItem('colorBlindMode') || 'none'; // Por defecto, 'none'
+    // Get the color blindness mode saved in localStorage
+    const colorBlindMode = localStorage.getItem('colorBlindMode') || 'none'; // Default is 'none'
     applyColorBlindMode(colorBlindMode);
 
-    // Obtener el contraste alto guardado en localStorage
-    const highContrast = localStorage.getItem('highContrast') || 'false'; // Por defecto, no hay contraste alto
+    // Get the high contrast setting saved in localStorage
+    const highContrast = localStorage.getItem('highContrast') || 'false'; // Default is no high contrast
     applyHighContrast(highContrast);
 
-    // Obtener el tamaño de fuente guardado en localStorage
-    const fontSize = localStorage.getItem('fontSize') || 1; // Por defecto, tamaño normal
+    // Get the font size saved in localStorage
+    const fontSize = localStorage.getItem('fontSize') || 1; // Default is normal size
     applyFontSize(fontSize);
 }
 
-// Función para escuchar los cambios de tema, daltonismo, contraste y fuente en localStorage
+// Function to listen for theme, color blindness, contrast, and font size changes in localStorage
 function monitorThemeChanges() {
     window.addEventListener('storage', (event) => {
-        // Monitorear cambios en el tema general
+        // Monitor changes to the general theme
         if (event.key === 'selectedTheme') {
             applyTheme(event.newValue);
         }
 
-        // Monitorear cambios en el modo de daltonismo
+        // Monitor changes to color blindness mode
         if (event.key === 'colorBlindMode') {
             applyColorBlindMode(event.newValue);
         }
 
-        // Monitorear cambios en el contraste alto
+        // Monitor changes to high contrast
         if (event.key === 'highContrast') {
             applyHighContrast(event.newValue);
         }
 
-        // Monitorear cambios en el tamaño de fuente
+        // Monitor changes to font size
         if (event.key === 'fontSize') {
             applyFontSize(event.newValue);
         }
     });
 }
 
-// Función para cambiar el tema general y guardarlo en localStorage
+// Function to change the general theme and save it to localStorage
 export function changeTheme(newTheme) {
     localStorage.setItem('selectedTheme', newTheme);
     applyTheme(newTheme);
 }
 
-// Función para cambiar el modo de daltonismo y guardarlo en localStorage
+// Function to change the color blindness mode and save it to localStorage
 export function changeColorBlindMode(mode) {
     localStorage.setItem('colorBlindMode', mode);
     applyColorBlindMode(mode);
 }
 
-// Función para cambiar el contraste alto y guardarlo en localStorage
+// Function to change high contrast and save it to localStorage
 export function changeHighContrast(enabled) {
     localStorage.setItem('highContrast', enabled ? 'true' : 'false');
     applyHighContrast(enabled ? 'true' : 'false');
 }
 
-// Función para cambiar el tamaño de fuente y guardarlo en localStorage
+// Function to change the font size and save it to localStorage
 export function changeFontSize(zoomLevel) {
     localStorage.setItem('fontSize', zoomLevel);
     applyFontSize(zoomLevel);
 }
 
-// Inicializar el tema al cargar la aplicación
+// Initialize the theme when the application loads
 initializeTheme();
 
-// Monitorear los cambios de tema, daltonismo, contraste y fuente en todas las páginas
+// Monitor theme, color blindness, contrast, and font size changes across all pages
 monitorThemeChanges();

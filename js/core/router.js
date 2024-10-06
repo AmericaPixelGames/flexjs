@@ -1,9 +1,9 @@
 import { renderPage } from './render.js';
 import { HomePage } from '../pages/home.js';
 import { AboutPage } from '../pages/about.js';
-import { DetailsPage } from '../pages/details.js';  // Ejemplo de página dinámica
+import { DetailsPage } from '../pages/details.js';  // Example of a dynamic page
 
-// Importar las nuevas páginas
+// Import the new pages
 import { ModalPage } from '../pages/modalPage.js';
 import { LinkPage } from '../pages/linkPage.js';
 import { TabsPage } from '../pages/tabsPage.js';
@@ -12,22 +12,22 @@ import { ThemeSelectorPage } from '../pages/themeSelectorPage.js';
 import { AccessibilityPage } from '../pages/accessibilityPage.js';
 import { SoporteMultimediaPage } from '../pages/soporteMultimediaPage.js';
 
-// Definir las rutas y las páginas asociadas
+// Define the routes and the associated pages
 const routes = {
     '/': HomePage,
     '/about': AboutPage,
-    '/details/:id': DetailsPage,  // Ruta dinámica
-    '/modal': ModalPage,  // Página para el componente Modal
-    '/link': LinkPage,  // Página para el componente Link
-    '/tabs': TabsPage,  // Página para el componente Tabs
-    '/image': ImagePage,  // Página para el componente Image
-    '/theme-selector': ThemeSelectorPage,  // Página para el selector de temas
-    '/accessibility': AccessibilityPage,  // Página para el componente de accesibilidad
-    '/soporte-multimedia': SoporteMultimediaPage,  // Nueva ruta para Soporte Multimedia
+    '/details/:id': DetailsPage,  // Dynamic route
+    '/modal': ModalPage,  // Page for the Modal component
+    '/link': LinkPage,  // Page for the Link component
+    '/tabs': TabsPage,  // Page for the Tabs component
+    '/image': ImagePage,  // Page for the Image component
+    '/theme-selector': ThemeSelectorPage,  // Page for the theme selector
+    '/accessibility': AccessibilityPage,  // Page for the accessibility component
+    '/soporte-multimedia': SoporteMultimediaPage,  // New route for Multimedia Support
 
 };
 
-// Función para extraer parámetros dinámicos de una ruta
+// Function to extract dynamic parameters from a route
 function extractParams(route, url) {
     const routeParts = route.split('/');
     const urlParts = url.split('/');
@@ -35,21 +35,21 @@ function extractParams(route, url) {
 
     routeParts.forEach((part, index) => {
         if (part.startsWith(':')) {
-            const paramName = part.slice(1);  // Quita el ":"
-            params[paramName] = urlParts[index];  // Extrae el valor del parámetro
+            const paramName = part.slice(1);  // Remove the ":"
+            params[paramName] = urlParts[index];  // Extract the parameter value
         }
     });
 
     return params;
 }
 
-// Función que compara la ruta y la URL actual
+// Function that compares the route and the current URL
 function matchRoute(route, url) {
     const routeParts = route.split('/');
     const urlParts = url.split('/');
 
     if (routeParts.length !== urlParts.length) {
-        return false;  // Diferente número de partes, no hay coincidencia
+        return false;  // Different number of parts, no match
     }
 
     return routeParts.every((part, index) => {
@@ -57,44 +57,44 @@ function matchRoute(route, url) {
     });
 }
 
-// Función que obtiene la ruta actual de la URL (sin hash)
+// Function that gets the current path from the URL (without hash)
 function getCurrentPath() {
     return window.location.pathname || '/';
 }
 
-// Función que gestiona el enrutamiento
+// Function that manages the routing
 function router() {
     const path = getCurrentPath();
 
-    // Buscar coincidencias de la ruta en la lista de rutas
+    // Find route matches in the routes list
     const matchedRoute = Object.keys(routes).find(route => matchRoute(route, path));
 
     if (matchedRoute) {
-        // Extraer parámetros si es una ruta dinámica
+        // Extract parameters if it's a dynamic route
         const params = extractParams(matchedRoute, path);
         const page = routes[matchedRoute];
 
-        // Verificar si la página devuelve un layout y postRender
-        const { layout, postRender } = page(params);  // Pasar los parámetros a la página
+        // Check if the page returns a layout and postRender
+        const { layout, postRender } = page(params);  // Pass the parameters to the page
 
         if (layout) {
-            renderPage(layout, 'app', postRender);  // Renderizar con layout y postRender
+            renderPage(layout, 'app', postRender);  // Render with layout and postRender
         } else {
-            renderPage(page(params));  // Si no hay layout, renderizar directamente
+            renderPage(page(params));  // If there's no layout, render directly
         }
     } else {
-        renderPage('Página no encontrada');
+        renderPage('Page not found');
     }
 }
 
-// Función para navegar a una nueva ruta
+// Function to navigate to a new route
 export function navigateTo(url) {
-    window.history.pushState({}, '', url);  // Actualiza la URL sin recargar la página
-    router();  // Llama al enrutador para cargar la nueva ruta
+    window.history.pushState({}, '', url);  // Update the URL without reloading the page
+    router();  // Call the router to load the new route
 }
 
-// Escuchar el evento "popstate" para manejar el botón de atrás/adelante del navegador
+// Listen for the "popstate" event to handle the browser back/forward buttons
 window.addEventListener('popstate', router);
 
-// Llamar al router al cargar la página por primera vez
+// Call the router when the page loads for the first time
 window.addEventListener('load', router);

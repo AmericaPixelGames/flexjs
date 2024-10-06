@@ -1,7 +1,7 @@
-// Archivo: js/components/navbar.js
+// File: js/components/navbar.js
 import { navigateTo } from '../../core/router.js';
 import { Image } from './image.js';  // Importing the Image component
-import { LanguageSwitcher, setupLanguageSwitcher } from './languageSwitcher.js'; // Importar el switcher
+import { LanguageSwitcher, setupLanguageSwitcher } from './languageSwitcher.js'; // Import the switcher
 export function Navbar(title, links, logoUrl = '') {  // Add logoUrl as an optional parameter
 
     const navLinks = links.map(link => {
@@ -35,14 +35,14 @@ export function Navbar(title, links, logoUrl = '') {  // Add logoUrl as an optio
                 <ul class="navbar-nav">
                     ${navLinks}
                 </ul>
-                <!-- Aquí agregamos el selector de idioma como un dropdown -->
+                <!-- Here we add the language switcher as a dropdown -->
                 ${LanguageSwitcher()}
             </div>
         </nav>
     `;
 }
 
-// Asignar eventos de clic a los enlaces de navegación dinámicamente
+// Dynamically assign click events to navigation links
 export function setupNavbarEvents() {
     setupLanguageSwitcher();
     const navLinks = document.querySelectorAll('.nav-link');
@@ -50,8 +50,7 @@ export function setupNavbarEvents() {
         link.addEventListener('click', function (event) {
             event.preventDefault();
             const url = this.getAttribute('data-url');
-            navigateTo(url);  // Llama a la función navigateTo cuando se hace clic
+            navigateTo(url);  // Call navigateTo function when clicked
         });
     });
 }
-

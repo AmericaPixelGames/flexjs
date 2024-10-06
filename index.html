@@ -1,40 +1,40 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <!-- Título del sitio -->
+        <!-- Site title -->
         <title>FlexJS</title>
-        <!-- Especificar la ruta base del sitio -->
+        <!-- Specify the base path of the site -->
         <base href="/" />
-        <!-- CSS de Bootstrap (CDN) -->
+        <!-- Bootstrap CSS (CDN) -->
         <link href="/library/bootstrap/bootstrap.min.css" rel="stylesheet">
-        <!-- Iconos fontawesome -->
+        <!-- Fontawesome icons -->
         <link rel="stylesheet" href="/css/icons.css">
-        <!-- Archivo CSS global -->
+        <!-- Global CSS file -->
         <link rel="stylesheet" href="/css/global.css">
-         <!-- Archivo CSS personalizado -->
+         <!-- Custom CSS file -->
         <link rel="stylesheet" href="/css/styles.css">
-        <!-- Aquí se cargará el archivo CSS del tema dinámicamente -->
-        <link id="theme-link" rel="stylesheet" href="/css/theme/light.css"> <!-- Tema por defecto -->
-        <!-- Aquí se cargará el archivo CSS del tema de Accessibilidad dinámicamente -->
+        <!-- Theme CSS file will be dynamically loaded here -->
+        <link id="theme-link" rel="stylesheet" href="/css/theme/light.css"> <!-- Default theme -->
+        <!-- Accessibility theme CSS file will be dynamically loaded here -->
     </head>
-    <!-- Aquí puedes agregar tu contenido -->
+    <!-- Add your content here -->
     <body>
-        <!-- Contenedor donde se renderizará el contenido de cada página -->
+        <!-- Container where the content of each page will be rendered -->
         <div id="app">
-            <!-- Aquí se renderizarán las páginas -->
+            <!-- Pages will be rendered here -->
         </div>
         <!-- jQuery (CDN) -->
         <script src="/plugins/jquery-3.6.0.min.js"></script>
-        <!-- JS de Bootstrap (CDN) -->
+        <!-- Bootstrap JS (CDN) -->
         <script src="/library/bootstrap/bootstrap.bundle.min.js"></script>
-        <!-- Sistema de renderizado -->
+        <!-- Rendering system -->
         <script type="module" src="/js/core/render.js"></script>
-        <!-- Sistema de enrutamiento -->
+        <!-- Routing system -->
         <script type="module" src="/js/core/router.js"></script>
-        <!-- Sistema  oyente de temas  -->
+        <!-- Theme listener system -->
         <script type="module" src="/js/core/themeListener.js"></script>
     </body>
 </html>

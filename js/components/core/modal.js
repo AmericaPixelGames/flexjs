@@ -1,7 +1,7 @@
-// Archivo: js/components/modal.js
+// File: js/components/modal.js
 
-export function Modal({ id, title, content, footer = '', onClose = null, onSave = null, textBtnClose= 'Close',textBtnSave='Save' }) {
-    // HTML para el modal de Bootstrap
+export function Modal({ id, title, content, footer = '', onClose = null, onSave = null, textBtnClose = 'Close', textBtnSave = 'Save' }) {
+    // HTML for the Bootstrap modal
     return `
         <div class="modal fade" id="${id}" tabindex="-1" role="dialog" aria-labelledby="${id}Label" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -27,24 +27,24 @@ export function Modal({ id, title, content, footer = '', onClose = null, onSave 
     `;
 }
 
-// Función para mostrar el modal programáticamente
+// Function to show the modal programmatically
 export function showModal(id) {
-    $(`#${id}`).modal('show');  // Usamos jQuery para mostrar el modal
+    $(`#${id}`).modal('show');  // Using jQuery to show the modal
 }
 
-// Función para ocultar el modal programáticamente
+// Function to hide the modal programmatically
 export function hideModal(id) {
-    $(`#${id}`).modal('hide');  // Usamos jQuery para ocultar el modal
+    $(`#${id}`).modal('hide');  // Using jQuery to hide the modal
 }
 
-// Función para manejar eventos del modal (por ejemplo, clic en "Guardar")
+// Function to handle modal events (e.g., click on "Save")
 export function handleModalEvents(id, onClose, onSave) {
-    // Cerrar modal
+    // Close modal
     if (onClose) {
         $(`#${id}`).on('hidden.bs.modal', onClose);
     }
     
-    // Guardar cambios
+    // Save changes
     if (onSave) {
         $(`#${id}-save-btn`).on('click', onSave);
     }
